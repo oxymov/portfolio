@@ -6,74 +6,77 @@
 <title>Jean Della Longa | Aerospace Engineer</title>
 
 <style>
-/* ================= RESET ================= */
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family: "Segoe UI", system-ui, sans-serif;
-  background:#060912;
+/* ===== RESET ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"Segoe UI",system-ui,sans-serif;
+  background:#05070f;
   color:white;
   overflow-x:hidden;
   cursor:none;
 }
 
-/* ================= CURSOR ================= */
+/* ===== CURSOR ===== */
 .cursor{
   position:fixed;
-  width:28px;height:28px;
-  border:2px solid #00cfff;
+  width:12px;height:12px;
+  border:1.5px solid #00cfff;
   border-radius:50%;
   pointer-events:none;
   transform:translate(-50%,-50%);
-  box-shadow:0 0 20px #00cfff;
-  z-index:10000;
+  box-shadow:0 0 8px #00cfff;
+  z-index:9999;
 }
 
-/* ================= GLOBAL ================= */
-section{
-  padding:80px 8%;
-  position:relative;
+/* ===== QUICK NAV ===== */
+.quick-nav{
+  position:fixed;
+  top:50%;
+  right:25px;
+  transform:translateY(-50%);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  z-index:999;
 }
+.quick-nav a{
+  width:10px;height:10px;
+  border-radius:50%;
+  background:rgba(255,255,255,.3);
+  display:block;
+  transition:.3s;
+}
+.quick-nav a:hover{
+  background:#00cfff;
+  box-shadow:0 0 10px #00cfff;
+}
+
+/* ===== GLOBAL ===== */
+section{padding:70px 8%}
 h2{
-  font-size:2.2rem;
-  margin-bottom:40px;
-  letter-spacing:3px;
+  font-size:2rem;
+  margin-bottom:35px;
+  letter-spacing:2px;
 }
-p{opacity:.85;line-height:1.7}
+p{opacity:.9;line-height:1.7}
 
-/* ================= HERO ================= */
+/* ===== HERO ===== */
 .hero{
-  min-height:100vh;
+  min-height:65vh;
   display:flex;
   align-items:center;
   background:radial-gradient(circle at bottom,#0f1a33,#05070f 70%);
+  position:relative;
 }
-.hero-content{
-  max-width:650px;
-}
-.hero h1{
-  font-size:3.2rem;
-  letter-spacing:5px;
-}
-.hero span{
-  color:#00cfff;
-}
-.hero p{
-  margin:25px 0;
-}
-.hero-tags{
-  display:flex;gap:15px;flex-wrap:wrap;
-}
-.tag{
-  padding:8px 18px;
-  border:1px solid rgba(255,255,255,.2);
-  border-radius:50px;
-  background:rgba(255,255,255,.04);
-}
+.hero-content{max-width:900px;position:relative;z-index:2}
+.hero h1{font-size:2.8rem;letter-spacing:4px}
+.hero span{color:#00cfff}
+.hero-role{margin:12px 0 25px;font-size:1.1rem}
+#keyword{color:#00cfff;transition:opacity .8s}
 
-/* ================= GRID BG ================= */
+/* ===== GRID ===== */
 .grid{
-  position:absolute;
-  inset:0;
+  position:absolute;inset:0;
   background-image:
     linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
@@ -85,115 +88,124 @@ p{opacity:.85;line-height:1.7}
   to{transform:translate(-300px,-300px)}
 }
 
-/* ================= CARDS ================= */
+/* ===== SECTION GRADIENT ===== */
+.section-gradient{
+  position:relative;
+  background:radial-gradient(circle at bottom,#0f1a33,#05070f 75%);
+  overflow:hidden;
+}
+.section-gradient::before{
+  content:"";
+  position:absolute;
+  inset:-50%;
+  background:
+    radial-gradient(circle at 30% 70%, rgba(0,207,255,0.08), transparent 40%),
+    radial-gradient(circle at 70% 30%, rgba(0,120,255,0.06), transparent 45%);
+  animation:slowFloat 60s linear infinite;
+}
+@keyframes slowFloat{
+  from{transform:translate(0,0)}
+  to{transform:translate(200px,-200px)}
+}
+.section-gradient>*{position:relative;z-index:2}
+
+/* ===== PROFILE CARD ===== */
+.profile-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:16px;
+  padding:35px;
+  max-width:850px;
+}
+
+/* ===== CARDS ===== */
 .cards{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
 }
 .card{
   padding:30px;
-  border-radius:15px;
+  border-radius:14px;
   background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.1);
-  box-shadow:0 0 30px rgba(0,207,255,.05);
 }
-.card h3{
-  margin-bottom:15px;
-  color:#00cfff;
-}
+.card h3{color:#00cfff;margin-bottom:12px}
 
-/* ================= SKILLS ================= */
+/* ===== SKILLS ===== */
 .skills{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:35px;
   text-align:center;
 }
-.skill svg{width:120px;height:120px;transform:rotate(-90deg)}
-.skill circle{
-  fill:none;stroke-width:8;
-  stroke:rgba(255,255,255,.1)
-}
+.skill svg{width:110px;height:110px;transform:rotate(-90deg)}
+.skill circle{fill:none;stroke-width:8;stroke:rgba(255,255,255,.1)}
 .skill .progress{
   stroke:#00cfff;
   stroke-dasharray:339;
   stroke-dashoffset:339;
   transition:2s;
 }
-.skill span{display:block;margin-top:10px}
+.skill span{display:block;margin-top:12px;font-size:.9rem}
 
-/* ================= TIMELINE ================= */
+/* ===== TIMELINE ===== */
 .timeline{
   position:relative;
-  max-width:900px;
+  max-width:1000px;
 }
 .timeline::before{
   content:"";
   position:absolute;
-  left:20px;top:0;bottom:0;
+  left:22px;top:0;bottom:0;
   width:2px;
   background:rgba(255,255,255,.2);
 }
 .event{
-  margin-left:70px;
-  margin-bottom:50px;
   position:relative;
+  padding-left:80px;
+  margin-bottom:60px;
 }
 .event::before{
   content:"";
   position:absolute;
-  left:-62px;top:5px;
+  left:15px;
+  top:6px;
   width:14px;height:14px;
   background:#00cfff;
   border-radius:50%;
-  box-shadow:0 0 15px #00cfff;
+  box-shadow:0 0 10px #00cfff;
 }
-.event span{opacity:.6;font-size:.85rem}
+.event h3{margin:8px 0}
+.event ul{margin-top:10px;padding-left:18px}
+.event li{opacity:.85;margin-bottom:6px}
 
-/* ================= PROJECTS ================= */
-.project{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-/* ================= LANGUAGES ================= */
+/* ===== LANGUAGES ===== */
 .languages{
   display:flex;
   gap:20px;
   flex-wrap:wrap;
 }
 .language{
-  padding:15px 25px;
+  padding:14px 22px;
   border-radius:50px;
   border:1px solid rgba(255,255,255,.2);
   background:rgba(255,255,255,.04);
-  animation:float 6s ease-in-out infinite;
-}
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-8px)}
 }
 
-/* ================= CONTACT ================= */
-.contact{
-  text-align:center;
-}
-.contact a{
-  color:#00cfff;
-  text-decoration:none;
-  letter-spacing:2px;
-}
-
-/* ================= ANIM ================= */
-.reveal{opacity:0;transform:translateY(40px);transition:1s}
+/* ===== REVEAL ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:1s}
 .reveal.visible{opacity:1;transform:none}
 
-/* ================= RESPONSIVE ================= */
+/* ===== CONTACT ===== */
+.contact{text-align:center;padding-bottom:100px}
+.contact a{color:#00cfff;text-decoration:none;font-size:1.1rem}
+
+/* ===== RESPONSIVE ===== */
 @media(max-width:768px){
-  h2{font-size:1.8rem}
-  .hero h1{font-size:2.2rem}
+  h2{font-size:1.7rem}
+  .hero h1{font-size:2.1rem}
+  .quick-nav{display:none}
 }
 </style>
 </head>
@@ -201,145 +213,130 @@ p{opacity:.85;line-height:1.7}
 <body>
 <div class="cursor"></div>
 
+<!-- QUICK NAV -->
+<div class="quick-nav">
+  <a href="#profile"></a>
+  <a href="#objective"></a>
+  <a href="#expertise"></a>
+  <a href="#skills"></a>
+  <a href="#experience"></a>
+  <a href="#contact"></a>
+</div>
+
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="profile">
   <div class="grid"></div>
   <div class="hero-content reveal">
     <h1>JEAN <span>DELLA LONGA</span></h1>
-    <p>Aerospace Systems Engineer — Materials, NDT & Automation</p>
-    <div class="hero-tags">
-      <div class="tag">ArianeGroup</div>
-      <div class="tag">Materials Science</div>
-      <div class="tag">CND</div>
-      <div class="tag">Web & Data</div>
+    <p class="hero-role">
+      Aerospace Systems Engineer — <span id="keyword">Mesures physiques</span>
+    </p>
+
+    <div class="profile-card">
+      <p>
+        Bonjour, je m'appelle Jean et j'ai 19 ans.<br><br>
+        Je suis actuellement en formation d’ingénieur à l’INSA en Génie Industriel et Innovation.
+        En parallèle, je suis alternant chez <strong>ArianeGroup</strong> sur des programmes de mesures spatiales.<br><br>
+        Formation initiale en science des matériaux (IUT de Bordeaux),
+        spécialisation en modélisation, caractérisation et mise en forme.<br><br>
+        Diplôme Universitaire en Contrôle Non Destructif (radiographie & tomographie X).<br><br>
+        Curieux et polyvalent, je développe aussi des compétences en programmation,
+        automatisation et systèmes numériques.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- PROFILE -->
-<section class="reveal">
-<h2>Mission Profile</h2>
+<!-- OBJECTIVE -->
+<section class="reveal section-gradient" id="objective">
+<h2>Objectif Professionnel</h2>
+<div class="card">
+  <p>
+    Concevoir, analyser et fiabiliser des systèmes de mesure et des structures
+    pour des applications industrielles et spatiales, en combinant
+    science des matériaux, méthodes expérimentales avancées et outils numériques.
+  </p>
+</div>
+</section>
+
+<!-- EXPERTISE -->
+<section class="reveal section-gradient" id="expertise">
+<h2>Expertises Techniques</h2>
 <div class="cards">
-  <div class="card">
-    <h3>Who I Am</h3>
-    <p>Industrial engineer focused on aerospace systems, non-destructive testing and digital tools.</p>
-  </div>
-  <div class="card">
-    <h3>Mindset</h3>
-    <p>Engineering rigor, automation, reliability and continuous improvement.</p>
-  </div>
-  <div class="card">
-    <h3>Vision</h3>
-    <p>Bridging physical measurements with smart digital systems.</p>
-  </div>
+  <div class="card"><h3>Caractérisation</h3><p>Analyse approfondie des propriétés matériaux.</p></div>
+  <div class="card"><h3>Élaboration</h3><p>Procédés composites, polymères, métalliques.</p></div>
+  <div class="card"><h3>Modélisation</h3><p>Simulation et calculs de contraintes.</p></div>
+  <div class="card"><h3>CND</h3><p>Ultrasons, tomographie X, thermographie IR.</p></div>
+  <div class="card"><h3>Conception</h3><p>Systèmes innovants sous contraintes industrielles.</p></div>
+  <div class="card"><h3>Programmation</h3><p>Python, JS, HTML, CSS, automatisation.</p></div>
 </div>
 </section>
 
 <!-- SKILLS -->
-<section class="reveal">
-<h2>Core Systems</h2>
+<section class="reveal section-gradient" id="skills">
+<h2>Niveaux de Maîtrise</h2>
 <div class="skills">
-  <div class="skill" data-p="90">
-    <svg><circle cx="60" cy="60" r="54"/><circle class="progress" cx="60" cy="60" r="54"/></svg>
-    <span>Tomographie X</span>
-  </div>
-  <div class="skill" data-p="85">
-    <svg><circle cx="60" cy="60" r="54"/><circle class="progress" cx="60" cy="60" r="54"/></svg>
-    <span>Thermographie IR</span>
-  </div>
-  <div class="skill" data-p="80">
-    <svg><circle cx="60" cy="60" r="54"/><circle class="progress" cx="60" cy="60" r="54"/></svg>
-    <span>Automation</span>
-  </div>
-  <div class="skill" data-p="75">
-    <svg><circle cx="60" cy="60" r="54"/><circle class="progress" cx="60" cy="60" r="54"/></svg>
-    <span>Web & Data</span>
-  </div>
+  <div class="skill" data-p="90"><svg><circle cx="55" cy="55" r="50"/><circle class="progress" cx="55" cy="55" r="50"/></svg><span>Tomographie X</span></div>
+  <div class="skill" data-p="85"><svg><circle cx="55" cy="55" r="50"/><circle class="progress" cx="55" cy="55" r="50"/></svg><span>Thermographie IR</span></div>
+  <div class="skill" data-p="80"><svg><circle cx="55" cy="55" r="50"/><circle class="progress" cx="55" cy="55" r="50"/></svg><span>Automatisation</span></div>
+  <div class="skill" data-p="75"><svg><circle cx="55" cy="55" r="50"/><circle class="progress" cx="55" cy="55" r="50"/></svg><span>Web & Data</span></div>
 </div>
 </section>
 
 <!-- EXPERIENCE -->
-<section class="reveal">
-<h2>Flight History</h2>
+<section class="reveal section-gradient" id="experience">
+<h2>Parcours Professionnel</h2>
 <div class="timeline">
-  <div class="event">
-    <span>2025 – Present</span>
-    <h3>ArianeGroup — Project Engineer</h3>
-    <p>Smart processing of active measurement data to optimize calibration cycles.</p>
-  </div>
-  <div class="event">
-    <span>2024 – 2025</span>
-    <h3>Safran Ceramics — NDT Engineer</h3>
-    <p>R&D inspections using X-ray tomography and IR thermography.</p>
-  </div>
-  <div class="event">
-    <span>2024 – 2025</span>
-    <h3>University of Bordeaux — Tutor</h3>
-    <p>Teaching communication and professional digital presence.</p>
-  </div>
-</div>
-</section>
-
-<!-- PROJECTS -->
-<section class="reveal">
-<h2>Engineering Projects</h2>
-<div class="cards">
-  <div class="card project">
-    <h3>Automated X-Ray Reconstruction</h3>
-    <p>Pipeline to automate acquisition and reconstruction of tomographic data.</p>
-  </div>
-  <div class="card project">
-    <h3>Calibration Data Platform</h3>
-    <p>Web tool to visualize measurement drift and predict recalibration.</p>
-  </div>
-  <div class="card project">
-    <h3>NDT Lab Dashboard</h3>
-    <p>Centralized monitoring of inspection equipment and results.</p>
-  </div>
-</div>
-</section>
-
-<!-- LANGUAGES -->
-<section class="reveal">
-<h2>Orbital Stations</h2>
-<div class="languages">
-  <div class="language">🇫🇷 French — Native</div>
-  <div class="language">🇮🇹 Italian — Native</div>
-  <div class="language">🇬🇧 English — Professional</div>
-  <div class="language">🇩🇪 German — Elementary</div>
+  <div class="event"><h3>ArianeGroup — Ingénieur projets</h3><ul><li>Données de mesures</li><li>Automatismes</li></ul></div>
+  <div class="event"><h3>Safran Ceramics — Ingénieur matériaux / CND</h3><ul><li>Tomographie X</li><li>Thermographie IR</li></ul></div>
+  <div class="event"><h3>Université de Bordeaux — Étudiant tuteur</h3><ul><li>Communication & accompagnement</li></ul></div>
 </div>
 </section>
 
 <!-- CONTACT -->
-<section class="contact reveal">
-<h2>Ground Control</h2>
-<p>📡 jean.dellalonga@gmail.com</p>
-<a href="https://linkedin.com/in/jean-dellalonga" target="_blank">LinkedIn</a>
+<section class="contact reveal section-gradient" id="contact">
+<p>📧 jean.dellalonga@gmail.com</p>
+<a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
 </section>
 
 <script>
 /* Cursor */
-const cursor=document.querySelector(".cursor");
+const c=document.querySelector(".cursor");
 document.addEventListener("mousemove",e=>{
-  cursor.style.left=e.clientX+"px";
-  cursor.style.top=e.clientY+"px";
+c.style.left=e.clientX+"px";
+c.style.top=e.clientY+"px";
 });
 
-/* Reveal + skills */
-const reveals=document.querySelectorAll(".reveal");
+/* Reveal */
 const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add("visible");
-      e.target.querySelectorAll(".skill").forEach(s=>{
-        const p=s.dataset.p;
-        const c=s.querySelector(".progress");
-        c.style.strokeDashoffset=339-(339*p/100);
-      });
-    }
-  });
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.classList.add("visible");
+e.target.querySelectorAll(".skill").forEach(s=>{
+const p=s.dataset.p;
+s.querySelector(".progress").style.strokeDashoffset=339-(339*p/100);
+});
+}
+});
 },{threshold:.3});
-reveals.forEach(r=>obs.observe(r));
+document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
+
+/* Keywords */
+const keywords=[
+"Mesures physiques","Tomographie X","Contrôle non destructif",
+"Science des matériaux","Caractérisation","Matériaux composites",
+"Programmation","Analyse de données","Automatisation","Modélisation"
+];
+let i=0;
+const k=document.getElementById("keyword");
+setInterval(()=>{
+k.style.opacity=0;
+setTimeout(()=>{
+i=(i+1)%keywords.length;
+k.textContent=keywords[i];
+k.style.opacity=1;
+},800);
+},6000);
 </script>
 </body>
 </html>
