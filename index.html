@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jean Della Longa | Aerospace Engineer</title>
+
+<style>
+/* ================= RESET ================= */
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background:#060912;
+  color:white;
+  overflow-x:hidden;
+  cursor:none;
+}
+
+/* ================= CURSOR ================= */
+.cursor{
+  position:fixed;
+  width:28px;height:28px;
+  border:2px solid #00cfff;
+  border-radius:50%;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 20px #00cfff;
+  z-index:10000;
+}
+
+/* ================= GLOBAL ================= */
+section{
+  padding:80px 8%;
+  position:relative;
+}
+h2{
+  font-size:2.2rem;
+  margin-bottom:40px;
+  letter-spacing:3px;
+}
+p{opacity:.85;line-height:1.7}
+
+/* ================= HERO ================= */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  background:radial-gradient(circle at bottom,#0f1a33,#05070f 70%);
+}
+.hero-content{
+  max-width:650px;
+}
+.hero h1{
+  font-size:3.2rem;
+  letter-spacing:5px;
+}
+.hero span{
+  color:#00cfff;
+}
+.hero p{
+  margin:25px 0;
+}
+.hero-tags{
+  display:flex;gap:15px;flex-wrap:wrap;
+}
+.tag{
+  padding:8px 18px;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:50px;
+  background:rgba(255,255,255,.04);
+}
+
+/* ================= GRID BG ================= */
+.grid{
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size:60px 60px;
+  animation:gridMove 40s linear infinite;
+}
+@keyframes gridMove{
+  from{transform:translate(0,0)}
+  to{transform:translate(-300px,-300px)}
+}
+
+/* ================= CARDS ================= */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+.card{
+  padding:30px;
+  border-radius:15px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  box-shadow:0 0 30px rgba(0,207,255,.05);
+}
+.card h3{
+  margin-bottom:15px;
+  color:#00cfff;
+}
+
+/* ================= SKILLS ================= */
+.skills{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:30px;
+  text-align:center;
+}
+.skill svg{width:120px;height:120px;transform:rotate(-90deg)}
+.skill circle{
+  fill:none;stroke-width:8;
+  stroke:rgba(255,255,255,.1)
+}
+.skill .progress{
+  stroke:#00cfff;
+  stroke-dasharray:339;
+  stroke-dashoffset:339;
+  transition:2s;
+}
+.skill span{display:block;margin-top:10px}
+
+/* ================= TIMELINE ================= */
+.timeline{
+  position:relative;
+  max-width:900px;
+}
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:20px;top:0;bottom:0;
+  width:2px;
+  background:rgba(255,255,255,.2);
+}
+.event{
+  margin-left:70px;
+  margin-bottom:50px;
+  position:relative;
+}
+.event::before{
+  content:"";
+  position:absolute;
+  left:-62px;top:5px;
+  width:14px;height:14px;
+  background:#00cfff;
+  border-radius:50%;
+  box-shadow:0 0 15px #00cfff;
+}
+.event span{opacity:.6;font-size:.85rem}
+
+/* ================= PROJECTS ================= */
+.project{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* ================= LANGUAGES ================= */
+.languages{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.language{
+  padding:15px 25px;
+  border-radius:50px;
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.04);
+  animation:float 6s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+
+/* ================= CONTACT ================= */
+.contact{
+  text-align:center;
+}
+.contact a{
+  color:#00cfff;
+  text-decoration:none;
+  letter-spacing:2px;
+}
+
+/* ================= ANIM ================= */
+.reveal{opacity:0;transform:translateY(40px);transition:1s}
+.reveal.visible{opacity:1;transform:none}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+  h2{font-size:1.8rem}
+  .hero h1{font-size:2.2rem}
+}
+</style>
+</head>
+
+<body>
+<div class="cursor"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="grid"></div>
+  <div class="hero-content reveal">
+    <h1>JEAN <span>DELLA LONGA</span></h1>
+    <p>Aerospace Systems Engineer — Materials, NDT & Automation</p>
+    <div class="hero-tags">
+      <div class="tag">ArianeGroup</div>
+      <div class="tag">Materials Science</div>
+      <div class="tag">CND</div>
+      <div class="tag">Web & Data</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROFILE -->
+<section class="reveal">
+<h2>Mission Profile</h2>
+<div class="cards">
+  <div class="card">
+    <h3>Who I Am</h3>
+    <p>Industrial engineer focused on aerospace systems, non-destructive testing and digital tools.</p>
+  </div>
+  <div class="card">
+    <h3>Mindset</h3>
+    <p>Engineering rigor, automation, reliability and continuous improvement.</p>
+  </div>
+  <div class="card">
+    <h3>Vision</h3>
+    <p>Bridging physical measurements with smart digital systems.</p>
+  </div>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section class="reveal">
+<h2>Core Systems</h2>
+<div class="skills">
+  <div class="skill" data-p="90">
+    <svg><circle cx="60" cy="60" r="54"/><circle class="progress" cx="60" cy="60" r="54"/></svg>
+    <span>Tomographie X</span>
+  </div>
+  <div class="skill" data-p="85">
+    <svg><circle cx="60" cy="60" r="54"/><circle class="progress" cx="60" cy="60" r="54"/></svg>
+    <span>Thermographie IR</span>
+  </div>
+  <div class="skill" data-p="80">
+    <svg><circle cx="60" cy="60" r="54"/><circle class="progress" cx="60" cy="60" r="54"/></svg>
+    <span>Automation</span>
+  </div>
+  <div class="skill" data-p="75">
+    <svg><circle cx="60" cy="60" r="54"/><circle class="progress" cx="60" cy="60" r="54"/></svg>
+    <span>Web & Data</span>
+  </div>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="reveal">
+<h2>Flight History</h2>
+<div class="timeline">
+  <div class="event">
+    <span>2025 – Present</span>
+    <h3>ArianeGroup — Project Engineer</h3>
+    <p>Smart processing of active measurement data to optimize calibration cycles.</p>
+  </div>
+  <div class="event">
+    <span>2024 – 2025</span>
+    <h3>Safran Ceramics — NDT Engineer</h3>
+    <p>R&D inspections using X-ray tomography and IR thermography.</p>
+  </div>
+  <div class="event">
+    <span>2024 – 2025</span>
+    <h3>University of Bordeaux — Tutor</h3>
+    <p>Teaching communication and professional digital presence.</p>
+  </div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section class="reveal">
+<h2>Engineering Projects</h2>
+<div class="cards">
+  <div class="card project">
+    <h3>Automated X-Ray Reconstruction</h3>
+    <p>Pipeline to automate acquisition and reconstruction of tomographic data.</p>
+  </div>
+  <div class="card project">
+    <h3>Calibration Data Platform</h3>
+    <p>Web tool to visualize measurement drift and predict recalibration.</p>
+  </div>
+  <div class="card project">
+    <h3>NDT Lab Dashboard</h3>
+    <p>Centralized monitoring of inspection equipment and results.</p>
+  </div>
+</div>
+</section>
+
+<!-- LANGUAGES -->
+<section class="reveal">
+<h2>Orbital Stations</h2>
+<div class="languages">
+  <div class="language">🇫🇷 French — Native</div>
+  <div class="language">🇮🇹 Italian — Native</div>
+  <div class="language">🇬🇧 English — Professional</div>
+  <div class="language">🇩🇪 German — Elementary</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact reveal">
+<h2>Ground Control</h2>
+<p>📡 jean.dellalonga@gmail.com</p>
+<a href="https://linkedin.com/in/jean-dellalonga" target="_blank">LinkedIn</a>
+</section>
+
+<script>
+/* Cursor */
+const cursor=document.querySelector(".cursor");
+document.addEventListener("mousemove",e=>{
+  cursor.style.left=e.clientX+"px";
+  cursor.style.top=e.clientY+"px";
+});
+
+/* Reveal + skills */
+const reveals=document.querySelectorAll(".reveal");
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add("visible");
+      e.target.querySelectorAll(".skill").forEach(s=>{
+        const p=s.dataset.p;
+        const c=s.querySelector(".progress");
+        c.style.strokeDashoffset=339-(339*p/100);
+      });
+    }
+  });
+},{threshold:.3});
+reveals.forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>
