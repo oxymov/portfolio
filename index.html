@@ -1,334 +1,2835 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jean Della Longa | Space Systems Engineer</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jean Della Longa | Ingénierie, Métrologie & Matériaux</title>
+    <meta name="description"
+        content="Portfolio de Jean Della Longa - Apprenti Ingénieur chez ArianeGroup & Étudiant Ingénieur à l'INSA Rouen Normandie." />
+    <meta property="og:title" content="Jean Della Longa | Portfolio" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jeandl.fr" />
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-<style>
-/* ================= RESET ================= */
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:"Inter",system-ui,sans-serif;
-  background:#02030a;
-  color:white;
-  overflow-x:hidden;
-  cursor:none;
-}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+        rel="stylesheet">
 
-/* ================= CURSOR ================= */
-.cursor{
-  position:fixed;
-  width:14px;height:14px;
-  border:2px solid #00e5ff;
-  border-radius:50%;
-  pointer-events:none;
-  transform:translate(-50%,-50%);
-  box-shadow:0 0 12px #00e5ff;
-  z-index:10000;
-}
+    <style>
+        :root {
+            --bg-main: #f5f5f0;
+            --bg-alt: #f0f0eb;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --accent: #7c6beb;
+            --accent-dark: #5b4bc7;
+            --accent-light: #ede9fe;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+            --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+            --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+            --radius: 16px;
+        }
 
-/* ================= STARFIELD ================= */
-#stars{
-  position:fixed;
-  inset:0;
-  z-index:-1;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* ================= GLOBAL ================= */
-section{
-  min-height:100vh;
-  padding:90px 10%;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-h1,h2,h3{
-  font-family:"Orbitron",sans-serif;
-  letter-spacing:3px;
-}
-h2{
-  font-size:2.2rem;
-  margin-bottom:40px;
-}
-p{line-height:1.8;opacity:.9}
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.65;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
 
-/* ================= HERO ================= */
-.hero{
-  position:relative;
-}
-.hero h1{
-  font-size:3rem;
-}
-.hero span{color:#00e5ff}
-.hero-role{
-  margin:20px 0 35px;
-  font-size:1.2rem;
-}
-.profile-card{
-  max-width:900px;
-  padding:40px;
-  border-radius:18px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.12);
-  backdrop-filter:blur(10px);
-}
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.25;
+        }
 
-/* ================= REVEAL ================= */
-.reveal{
-  opacity:0;
-  transform:translateY(40px) scale(.97);
-  transition:1.2s cubic-bezier(.2,.8,.2,1);
-}
-.reveal.visible{
-  opacity:1;
-  transform:none;
-}
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
 
-/* ================= WORLDS ================= */
-.world{
-  position:relative;
-}
-.world::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 30% 70%, rgba(0,229,255,.08), transparent 40%),
-    radial-gradient(circle at 70% 30%, rgba(120,0,255,.06), transparent 45%);
-  animation:float 50s linear infinite;
-}
-@keyframes float{
-  from{transform:translate(0,0)}
-  to{transform:translate(200px,-200px)}
-}
-.world>*{position:relative}
 
-/* ================= CARDS ================= */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
-}
-.card{
-  padding:30px;
-  border-radius:16px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.1);
-  transition:.4s;
-}
-.card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 0 30px rgba(0,229,255,.2);
-}
-.card h3{color:#00e5ff;margin-bottom:12px}
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 0 1.5rem;
+            transition: padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-/* ================= PORTAL ================= */
-.portal{
-  margin:80px auto;
-  width:200px;height:200px;
-  border-radius:50%;
-  border:2px solid #00e5ff;
-  box-shadow:
-    0 0 30px #00e5ff,
-    inset 0 0 40px rgba(0,229,255,.4);
-  animation:spin 12s linear infinite;
-}
-@keyframes spin{
-  to{transform:rotate(360deg)}
-}
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(245, 245, 240, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+            border-radius: 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-/* ================= PROJECTS ================= */
-.projects{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:35px;
-}
-.project{
-  padding:30px;
-  border-radius:18px;
-  background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
-  border:1px solid rgba(255,255,255,.12);
-  position:relative;
-  overflow:hidden;
-}
-.project::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(120deg,transparent,rgba(0,229,255,.25),transparent);
-  transform:translateX(-100%);
-  transition:.6s;
-}
-.project:hover::after{
-  transform:translateX(100%);
-}
-.project h3{color:#00e5ff}
+        header.scrolled {
+            padding-top: 12px;
+        }
 
-/* ================= TIMELINE ================= */
-.timeline{
-  position:relative;
-  max-width:1000px;
-}
-.timeline::before{
-  content:"";
-  position:absolute;
-  left:20px;top:0;bottom:0;
-  width:2px;
-  background:rgba(255,255,255,.2);
-}
-.event{
-  padding-left:80px;
-  margin-bottom:60px;
-}
-.event::before{
-  content:"";
-  position:absolute;
-  left:13px;
-  width:14px;height:14px;
-  background:#00e5ff;
-  border-radius:50%;
-  box-shadow:0 0 10px #00e5ff;
-}
+        header.scrolled .nav-container {
+            max-width: 1080px;
+            height: 58px;
+            padding: 0 1.75rem;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            box-shadow: 0 12px 30px -8px rgba(15, 23, 42, 0.1);
+        }
 
-/* ================= CONTACT ================= */
-.contact{text-align:center}
-.contact a{
-  color:#00e5ff;
-  text-decoration:none;
-  font-size:1.2rem;
-}
+        .scroll-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2.5px;
+            background: linear-gradient(90deg, var(--accent), #a78bfa);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
 
-/* ================= RESPONSIVE ================= */
-@media(max-width:768px){
-  h1{font-size:2.2rem}
-  h2{font-size:1.8rem}
-}
-</style>
+        .logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.15rem;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        header.scrolled .logo {
+            font-size: 1.05rem;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            padding: 0.4rem 0.75rem;
+            border-radius: 999px;
+            transition: all 0.25s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active-link {
+            color: var(--accent);
+            background: var(--accent-light);
+        }
+
+
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            background: var(--bg-alt);
+            padding: 3px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            gap: 3px;
+        }
+
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            border-radius: 999px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn svg {
+            width: 16px;
+            height: 12px;
+            border-radius: 2px;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+        }
+
+        .lang-btn.active {
+            background: #ffffff;
+            color: var(--text-primary);
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: var(--text-primary);
+        }
+
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: var(--text-primary);
+        }
+
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 1.5rem 60px;
+            background: var(--bg-main);
+            border-bottom: none;
+            background-image: none;
+            background-attachment: scroll;
+        }
+
+        .hero-bento {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            grid-template-rows: auto auto;
+            gap: 18px;
+        }
+
+
+        .hero-profile-card {
+            grid-row: 1 / 3;
+            background: var(--text-primary);
+            border-radius: 24px;
+            padding: 2.25rem 2rem 2rem;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-profile-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-about-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.75);
+            letter-spacing: 0.02em;
+        }
+
+        .hero-about-label svg {
+            opacity: 0.8;
+        }
+
+        .hero-profile-photo {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0.5rem auto 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .hero-profile-photo .photo-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #c4b5fd);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-profile-photo .photo-circle img {
+            width: 92%;
+            height: 92%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .hero-name-block {
+            margin-top: auto;
+        }
+
+        .hero-name-im {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.55);
+            letter-spacing: -0.01em;
+            margin-bottom: 0.15rem;
+        }
+
+        .hero-name-full {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(2rem, 3.8vw, 2.85rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.08;
+            color: #ffffff;
+            overflow-wrap: break-word;
+        }
+
+        .hero-email-line {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+            font-size: 0.84rem;
+            color: rgba(255, 255, 255, 0.65);
+            word-break: break-all;
+        }
+
+        .hero-email-line svg {
+            flex-shrink: 0;
+        }
+
+
+        .hero-right-top {
+            display: grid;
+            grid-template-columns: 1.4fr 0.6fr;
+            gap: 18px;
+        }
+
+
+        .hero-title-card {
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 2.5rem 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .hero-big-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 0.95;
+            color: var(--text-primary);
+        }
+
+        .hero-title-subtitle {
+            margin-top: 1.25rem;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            max-width: 420px;
+        }
+
+
+        .hero-stats-card {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .stat-box {
+            flex: 1;
+            border-radius: 20px;
+            padding: 1.5rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-box.mint {
+            background: #d1fae5;
+        }
+
+        .stat-box.purple {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .stat-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+
+        .stat-box.purple .stat-number {
+            color: #ffffff;
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-top: 0.2rem;
+            opacity: 0.75;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+
+        .hero-right-bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+
+        .hero-domain-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 1.75rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .hero-domain-card h4 {
+            font-size: 0.92rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-domain-card h4 svg {
+            color: var(--accent);
+        }
+
+        .hero-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+        }
+
+        .tag {
+            background: var(--bg-alt);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 0.3rem 0.75rem;
+            border-radius: 999px;
+        }
+
+
+        .hero-cta-card {
+            background: linear-gradient(135deg, var(--accent), #a78bfa);
+            border-radius: 20px;
+            padding: 1.35rem 1.5rem;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hero-cta-card h4 {
+            color: #ffffff;
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 0.2rem;
+        }
+
+        .ascent-widget {
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 14px;
+            padding: 0.55rem 0.75rem 0.45rem;
+            margin: 0.55rem 0;
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .ascent-widget:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .ascent-widget-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.02em;
+        }
+
+        .ascent-widget-title {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .ascent-pulse {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #34d399;
+            box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.35);
+            display: inline-block;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.25);
+                opacity: 0.7;
+            }
+        }
+
+        .ascent-badge {
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 0.15rem 0.5rem;
+            border-radius: 999px;
+            font-size: 0.66rem;
+            font-weight: 700;
+            color: #ffffff;
+            white-space: nowrap;
+        }
+
+        .ascent-chart-container {
+            width: 100%;
+            line-height: 0;
+        }
+
+        .ascent-svg {
+            width: 100%;
+            height: auto;
+            display: block;
+            overflow: visible;
+        }
+
+        .ascent-axis-lbl {
+            font-size: 7.5px;
+            font-weight: 700;
+            fill: rgba(255, 255, 255, 0.85);
+            font-family: inherit;
+        }
+
+        .ascent-tick-lbl {
+            font-size: 6.5px;
+            font-weight: 600;
+            fill: rgba(255, 255, 255, 0.65);
+            font-family: inherit;
+        }
+
+        .ascent-annot {
+            font-size: 7.5px;
+            font-weight: 700;
+            fill: #ffffff;
+            font-family: inherit;
+            letter-spacing: 0.01em;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+        }
+
+        .ascent-sub-annot {
+            font-size: 6.2px;
+            font-weight: 600;
+            fill: rgba(255, 255, 255, 0.75);
+            font-family: inherit;
+            letter-spacing: 0.02em;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: auto;
+            padding-top: 0.35rem;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            backdrop-filter: blur(4px);
+        }
+
+        .social-btn:hover {
+            background: #ffffff;
+            color: var(--accent);
+            border-color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: fit-content;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #4ade80;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6);
+            }
+
+            70% {
+                box-shadow: 0 0 0 8px rgba(74, 222, 128, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
+            }
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.875rem 1.6rem;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--text-primary);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 107, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: #ffffff;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+
+        .hero h1,
+        .hero-subtitle,
+        .hero-actions,
+        .avatar-wrapper {}
+
+
+        @media (max-width: 1060px) {
+            .hero-bento {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                gap: 16px;
+            }
+
+            .hero-profile-card {
+                grid-row: auto;
+                min-height: auto;
+                padding: 2rem 1.75rem;
+            }
+
+            .hero-profile-photo {
+                width: 180px;
+                height: 180px;
+                margin: 0.75rem auto 1.25rem;
+            }
+
+            .hero-right-top {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-right-bottom {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 85px 1rem 35px;
+            }
+
+            .hero-bento {
+                gap: 14px;
+            }
+
+            .hero-profile-card {
+                min-height: auto;
+                border-radius: 20px;
+                padding: 1.5rem 1.25rem;
+            }
+
+            .hero-profile-photo {
+                width: 145px;
+                height: 145px;
+                margin: 0.5rem auto 1rem;
+            }
+
+            .hero-name-full {
+                font-size: 2.1rem;
+            }
+
+            .hero-big-title {
+                font-size: 2.3rem;
+            }
+
+            .hero-title-card,
+            .hero-domain-card,
+            .hero-cta-card {
+                border-radius: 18px;
+                padding: 1.5rem;
+            }
+
+            .stat-box {
+                border-radius: 14px;
+                padding: 1.25rem 1rem;
+            }
+
+            .hero-stats-card {
+                flex-direction: row;
+            }
+        }
+
+
+        section[id] {
+            scroll-margin-top: 85px;
+        }
+
+        section {
+            padding: 96px 1.5rem;
+        }
+
+        .bg-alt {
+            background-color: var(--bg-alt);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .highlight {
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            max-width: 700px;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(1.85rem, 3vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+
+        .timeline {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 2.25rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .experience-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: #cbd5e1;
+            transform: translateY(-3px);
+        }
+
+        .exp-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .exp-title-group {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .company-logo {
+            width: 68px;
+            height: 68px;
+            border-radius: 14px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .company-logo img,
+        .company-logo svg {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .exp-company {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .exp-role {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-top: 0.15rem;
+        }
+
+        .exp-meta {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .exp-date {
+            display: inline-block;
+            background: var(--bg-alt);
+            border: 1px solid var(--border-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .exp-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .exp-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .exp-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .exp-list strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+
+        .skills-video-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25rem;
+        }
+
+
+        .video-showcase-card {
+            background: linear-gradient(135deg, #090d16 0%, #15182a 60%, #1a1638 100%);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            transition: all 0.35s ease;
+            position: relative;
+        }
+
+        .video-showcase-card:hover {
+            border-color: rgba(124, 107, 235, 0.4);
+            box-shadow: 0 25px 35px -5px rgba(124, 107, 235, 0.15), 0 10px 15px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-thumbnail-box {
+            position: relative;
+            background: #000000;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
+            background-image:
+                radial-gradient(circle at center, rgba(124, 107, 235, 0.35) 0%, rgba(15, 23, 42, 0.95) 75%),
+                url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .video-overlay-grid {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.75) 100%);
+        }
+
+        .video-play-btn {
+            position: relative;
+            z-index: 2;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #ffffff;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: none;
+            cursor: pointer;
+        }
+
+        .video-play-btn svg {
+            margin-left: 4px;
+            width: 26px;
+            height: 26px;
+            fill: #0f172a;
+            transition: transform 0.25s ease;
+        }
+
+        .video-thumbnail-box:hover .video-play-btn {
+            transform: scale(1.12);
+            background: var(--accent);
+            box-shadow: 0 0 30px rgba(124, 107, 235, 0.8);
+        }
+
+        .video-thumbnail-box:hover .video-play-btn svg {
+            fill: #ffffff;
+        }
+
+        .video-duration-tag {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.85);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            z-index: 2;
+            letter-spacing: 0.05em;
+        }
+
+        .video-content-box {
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .video-badge-row {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .video-badge-yt {
+            background: #ef4444;
+            color: #ffffff;
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        .video-badge-status {
+            background: rgba(124, 107, 235, 0.2);
+            border: 1px solid rgba(124, 107, 235, 0.4);
+            color: #c4b5fd;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+        }
+
+        .video-title {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.3;
+            margin-bottom: 0.85rem;
+        }
+
+        .video-desc {
+            font-size: 0.94rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .video-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.7rem 1.4rem;
+            border-radius: 999px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            width: fit-content;
+        }
+
+        .video-action-btn:hover {
+            background: #ffffff;
+            color: #0f172a;
+            transform: translateY(-2px);
+        }
+
+
+        .skills-compact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .skill-compact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+        }
+
+        .skill-compact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: #cbd5e1;
+        }
+
+        .skill-compact-header {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .skill-compact-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--accent-light);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .skill-compact-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1.25;
+        }
+
+        .skill-compact-desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 1.25rem;
+        }
+
+        .skill-compact-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+        }
+
+        .skill-tag-sm {
+            background: var(--bg-alt);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+        }
+
+
+        @keyframes shakeNo {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            15%,
+            45%,
+            75% {
+                transform: translateX(-8px);
+            }
+
+            30%,
+            60%,
+            90% {
+                transform: translateX(8px);
+            }
+        }
+
+        .btn-finished {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            background: var(--bg-alt);
+            border: 1px solid var(--border-color);
+            padding: 0.55rem 1.15rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+            width: fit-content;
+        }
+
+        .btn-finished:hover {
+            border-color: #ef4444;
+            color: #ef4444;
+            background: #fff5f5;
+        }
+
+        .btn-finished.denied {
+            animation: shakeNo 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+            background: #fef2f2 !important;
+            border-color: #ef4444 !important;
+            color: #dc2626 !important;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
+        }
+
+        .finished-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #94a3b8;
+            transition: background 0.2s ease;
+        }
+
+        .btn-finished:hover .finished-dot,
+        .btn-finished.denied .finished-dot {
+            background: #ef4444;
+        }
+
+        .finished-label-tag {
+            background: rgba(148, 163, 184, 0.15);
+            color: var(--text-secondary);
+            font-size: 0.72rem;
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .btn-finished.denied .finished-label-tag {
+            background: rgba(239, 68, 68, 0.15);
+            color: #dc2626;
+        }
+
+        .project-tag-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            width: fit-content;
+        }
+
+
+        .toast-notice {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: #0f172a;
+            color: #ffffff;
+            padding: 0.85rem 1.5rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            z-index: 99999;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            max-width: 90vw;
+            text-align: center;
+        }
+
+        .toast-notice.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast-notice.denied {
+            background: #7f1d1d;
+            border-color: #ef4444;
+            color: #fef2f2;
+            box-shadow: 0 12px 30px rgba(220, 38, 38, 0.35);
+        }
+
+
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-backdrop.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: #ffffff;
+            border-radius: 24px;
+            max-width: 580px;
+            width: 100%;
+            padding: 2.25rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            transform: translateY(20px) scale(0.97);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-backdrop.open .modal-box {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+        }
+
+        .modal-close-btn {
+            background: var(--bg-alt);
+            border: 1px solid var(--border-color);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .modal-close-btn:hover {
+            background: var(--text-primary);
+            color: #ffffff;
+        }
+
+
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .edu-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+        }
+
+        .edu-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+
+        .edu-rank {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: #fef3c7;
+            color: #b45309;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 0.3rem 0.75rem;
+            border-radius: 999px;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .edu-school {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .edu-degree {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .edu-desc {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .edu-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .project-banner {
+            height: 190px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(6px);
+            color: #ffffff;
+            padding: 0.3rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .project-body {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-body h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-body p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 0.95rem;
+        }
+
+        .project-link:hover {
+            gap: 0.7rem;
+        }
+
+
+        .contact-box {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            border-radius: 24px;
+            padding: 4rem 2.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-box h2 {
+            color: #ffffff;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .contact-box p {
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.05rem;
+        }
+
+        .contact-email-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--accent);
+            color: #ffffff;
+            padding: 1rem 2rem;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.35);
+        }
+
+        .contact-email-btn:hover {
+            background: #a78bfa;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+
+        @media (max-width: 920px) {
+            header {
+                padding: 0;
+            }
+
+            header.scrolled {
+                padding: 8px 12px 0;
+            }
+
+            .nav-container {
+                overflow: visible !important;
+            }
+
+            header.scrolled .nav-container {
+                overflow: visible !important;
+            }
+
+            .video-showcase-card {
+                grid-template-columns: 1fr;
+            }
+
+            .video-thumbnail-box {
+                min-height: 220px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: calc(100% + 8px);
+                left: 1rem;
+                right: 1rem;
+                background: #ffffff;
+                flex-direction: column;
+                padding: 0.85rem;
+                gap: 0.4rem;
+                border-radius: 18px;
+                border: 1px solid var(--border-color);
+                box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.2), 0 8px 10px -6px rgba(15, 23, 42, 0.08);
+                z-index: 10001;
+            }
+
+            .nav-links.open {
+                display: flex !important;
+            }
+
+            .nav-links li {
+                width: 100%;
+                list-style: none;
+            }
+
+            .nav-links a {
+                display: block;
+                width: 100%;
+                padding: 0.85rem 1rem;
+                font-size: 0.95rem;
+                font-weight: 600;
+                border-radius: 12px;
+                background: var(--bg-alt);
+                color: var(--text-primary);
+            }
+
+            .nav-links a:hover,
+            .nav-links a.active-link {
+                background: var(--accent-light);
+                color: var(--accent);
+            }
+
+            .mobile-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                background: var(--bg-alt);
+                border: 1px solid var(--border-color);
+            }
+
+            .exp-meta {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 580px) {
+            section {
+                padding: 64px 1.25rem;
+            }
+
+            .experience-card,
+            .edu-card,
+            .project-body {
+                padding: 1.5rem;
+            }
+
+            .video-content-box {
+                padding: 1.75rem 1.25rem;
+            }
+
+            .video-title {
+                font-size: 1.25rem;
+            }
+
+            .exp-title-group {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.85rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-<canvas id="stars"></canvas>
-<div class="cursor"></div>
 
-<!-- HERO -->
-<section class="hero reveal">
-  <h1>JEAN <span>DELLA LONGA</span></h1>
-  <p class="hero-role">Aerospace & Systems Engineer — Explorer of Complex Systems</p>
 
-  <div class="profile-card">
-    <p>
-      Ingénieur en formation, passionné par les systèmes spatiaux, la mesure avancée
-      et l’ingénierie multidisciplinaire.<br><br>
-      Alternant chez <strong>ArianeGroup</strong> sur des programmes de mesures spatiales.
-      Formation en science des matériaux, CND, modélisation et automatisation.<br><br>
-      Co-fondateur de <strong>SmartcordAI</strong>, projet orienté intelligence artificielle
-      et systèmes intelligents.
-    </p>
-  </div>
-</section>
+    <header id="mainHeader">
+        <div class="nav-container">
+            <a href="#" class="logo">Jean Della Longa<span>.</span></a>
 
-<!-- EXPERTISE -->
-<section class="world reveal">
-  <h2>Station Scientifique — Expertises</h2>
-  <div class="cards">
-    <div class="card"><h3>Mesures & Capteurs</h3><p>Systèmes de mesure complexes, environnements contraints.</p></div>
-    <div class="card"><h3>Contrôle Non Destructif</h3><p>Tomographie X, thermographie IR, méthodes avancées.</p></div>
-    <div class="card"><h3>Matériaux</h3><p>Composites, polymères, métalliques.</p></div>
-    <div class="card"><h3>Programmation</h3><p>Python, Web, automatisation, data.</p></div>
-  </div>
-</section>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#experiences" onclick="closeNavMenu()" data-i18n="nav_exp">Expériences</a></li>
+                    <li><a href="#competences" onclick="closeNavMenu()" data-i18n="nav_skills">Compétences</a></li>
+                    <li><a href="#formation" onclick="closeNavMenu()" data-i18n="nav_edu">Formation</a></li>
+                    <li><a href="#projets" onclick="closeNavMenu()" data-i18n="nav_projects">Projets & Engagement</a>
+                    </li>
+                    <li><a href="#contact" onclick="closeNavMenu()" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+            </nav>
 
-<!-- PORTAL -->
-<section class="reveal">
-  <h2>Portail Dimensionnel — Projets</h2>
-  <div class="portal"></div>
-</section>
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
 
-<!-- PROJECTS -->
-<section class="world reveal">
-  <div class="projects">
-    <div class="project">
-      <h3>SmartcordAI</h3>
-      <p>
-        Co-fondateur — Développement d’une solution intégrant intelligence artificielle,
-        automatisation et systèmes intelligents.<br><br>
-        (Section prête à détailler produit, stack, vision, résultats.)
-      </p>
+                <div class="lang-switcher" aria-label="Choisir la langue">
+                    <button class="lang-btn active" id="btn-fr" onclick="setLanguage('fr')" title="Français">
+                        <svg viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="1" height="2" x="0" fill="#002395" />
+                            <rect width="1" height="2" x="1" fill="#ffffff" />
+                            <rect width="1" height="2" x="2" fill="#ed2939" />
+                        </svg>
+                        FR
+                    </button>
+                    <button class="lang-btn" id="btn-en" onclick="setLanguage('en')" title="English">
+                        <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+                            <clipPath id="s">
+                                <path d="M0,0 v30 h60 v-30 z" />
+                            </clipPath>
+                            <clipPath id="t">
+                                <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z" />
+                            </clipPath>
+                            <g clip-path="url(#s)">
+                                <path d="M0,0 v30 h60 v-30 z" fill="#012169" />
+                                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6" />
+                                <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E"
+                                    stroke-width="4" />
+                                <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10" />
+                                <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6" />
+                            </g>
+                        </svg>
+                        EN
+                    </button>
+                </div>
+
+
+                <button class="mobile-toggle" id="mobileToggle" onclick="toggleNavMenu(event)" aria-label="Menu">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+
+
+            <div class="scroll-progress" id="scrollProgress"></div>
+        </div>
+    </header>
+
+
+    <section class="hero" id="accueil">
+        <div class="hero-bento">
+
+
+            <div class="hero-profile-card">
+                <div class="hero-profile-top">
+                    <div class="badge">
+                        <span class="badge-dot"></span>
+                        <span data-i18n="hero_badge">Apprenti Ingénieur @ ArianeGroup • INSA Rouen</span>
+                    </div>
+                </div>
+
+                <div class="hero-profile-photo">
+                    <div class="photo-circle">
+                        <img src="photo-profil.jpeg" alt="Jean Della Longa" />
+                    </div>
+                </div>
+
+                <div class="hero-name-block">
+                    <div class="hero-name-im">Im,</div>
+                    <div class="hero-name-full">Jean<br>Della Longa</div>
+                    <div class="hero-email-line">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        jean.della-longa@insa-rouen.fr
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="hero-right-top">
+
+                <div class="hero-title-card">
+                    <div>
+                        <div class="hero-big-title" data-i18n="hero_bento_title">Portfolio<span
+                                style="color:var(--accent)">.</span></div>
+                    </div>
+                    <p class="hero-title-subtitle" data-i18n="hero_subtitle">
+                        Étudiant ingénieur à l'INSA Rouen Normandie et apprenti chez ArianeGroup. Spécialisé dans la
+                        modélisation de chaînes de mesure, les contrôles non destructifs (CND) sub-microniques, la
+                        science
+                        des matériaux et le développement Python appliqué à l'industrie spatiale et aéronautique.
+                    </p>
+                </div>
+
+
+                <div class="hero-stats-card">
+                    <div class="stat-box mint">
+                        <span class="stat-number" data-i18n="stat_years">3+</span>
+                        <span class="stat-label" data-i18n="stat_years_label">Ans d'exp.</span>
+                    </div>
+                    <div class="stat-box purple">
+                        <span class="stat-number" data-i18n="stat_rank">2e</span>
+                        <span class="stat-label" data-i18n="stat_rank_label">de promo</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="hero-right-bottom">
+
+                <div class="hero-domain-card">
+                    <h4>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                        </svg>
+                        <span data-i18n="hero_domain_title">Domaines</span>
+                    </h4>
+                    <div class="hero-card-tags">
+                        <span class="tag">INSA Rouen</span>
+                        <span class="tag">ArianeGroup</span>
+                        <span class="tag">Safran Ceramics</span>
+                        <span class="tag" data-i18n="card_tag_ndt">CND & Métrologie</span>
+                        <span class="tag">Python & CAO</span>
+                        <span class="tag" data-i18n="hero_tag_mat">Matériaux</span>
+                    </div>
+                </div>
+
+
+                <div class="hero-cta-card">
+                    <h4 data-i18n="card_role">Apprenti Ingénieur Aérospatial</h4>
+                    <div class="ascent-widget">
+                        <div class="ascent-widget-header">
+                            <div class="ascent-widget-title">
+                                <span class="ascent-pulse"></span>
+                                <span data-i18n="ascent_title">Trajectoire de Vol</span>
+                            </div>
+                            <span class="ascent-badge" data-i18n="card_ariane_stat">265 Lancements</span>
+                        </div>
+                        <div class="ascent-chart-container">
+                            <svg viewBox="0 0 320 94" class="ascent-svg" aria-label="Courbe d'ascension">
+                                <defs>
+                                    <linearGradient id="trajAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.32" />
+                                        <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02" />
+                                    </linearGradient>
+                                    <filter id="ascentGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                        <feGaussianBlur stdDeviation="1.5" result="blur" />
+                                        <feMerge>
+                                            <feMergeNode in="blur" />
+                                            <feMergeNode in="SourceGraphic" />
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+                                <line x1="34" y1="8" x2="34" y2="78" stroke="rgba(255,255,255,0.45)"
+                                    stroke-width="1.2" />
+                                <path d="M 32 11 L 34 6 L 36 11" fill="rgba(255,255,255,0.85)" />
+                                <text x="28" y="10" class="ascent-axis-lbl" text-anchor="end">Alt</text>
+                                <text x="28" y="23" class="ascent-tick-lbl" text-anchor="end">GTO</text>
+                                <text x="28" y="53" class="ascent-tick-lbl" text-anchor="end">60km</text>
+                                <text x="28" y="80" class="ascent-tick-lbl" text-anchor="end">0</text>
+                                <line x1="34" y1="78" x2="312" y2="78" stroke="rgba(255,255,255,0.45)"
+                                    stroke-width="1.2" />
+                                <path d="M 309 76 L 314 78 L 309 80" fill="rgba(255,255,255,0.85)" />
+                                <text x="312" y="89" class="ascent-axis-lbl" text-anchor="end"
+                                    data-i18n="ascent_axis_t">t (Temps)</text>
+                                <line x1="34" y1="20" x2="295" y2="20" stroke="rgba(255,255,255,0.12)"
+                                    stroke-dasharray="2,3" stroke-width="0.9" />
+                                <line x1="34" y1="50" x2="295" y2="50" stroke="rgba(255,255,255,0.12)"
+                                    stroke-dasharray="2,3" stroke-width="0.9" />
+                                <line x1="124" y1="50" x2="124" y2="78" stroke="rgba(255,255,255,0.25)"
+                                    stroke-dasharray="2,2" stroke-width="0.9" />
+                                <path
+                                    d="M 42 78 C 76 77, 104 60, 124 50 C 158 36, 215 20, 275 20 L 305 20 L 305 78 L 42 78 Z"
+                                    fill="url(#trajAreaGrad)" />
+                                <path d="M 42 78 C 76 77, 104 60, 124 50 C 158 36, 215 20, 275 20" stroke="#ffffff"
+                                    stroke-width="2" stroke-linecap="round" fill="none" />
+                                <line x1="275" y1="20" x2="305" y2="20" stroke="rgba(255,255,255,0.65)"
+                                    stroke-width="1.5" stroke-dasharray="3,3" />
+                                <circle cx="42" cy="78" r="2.5" fill="#ffffff" />
+                                <text x="42" y="89" class="ascent-annot" text-anchor="middle">H0</text>
+                                <line x1="118" y1="40" x2="124" y2="50" stroke="rgba(255,255,255,0.65)"
+                                    stroke-width="0.9" />
+                                <circle cx="124" cy="50" r="2.5" fill="#ffffff" />
+                                <text x="118" y="33" class="ascent-annot" text-anchor="end"
+                                    data-i18n="ascent_sep">Séparation boosters</text>
+                                <text x="118" y="42" class="ascent-sub-annot" text-anchor="end">60 km • ESR</text>
+                                <circle cx="275" cy="20" r="3" fill="#ffffff" />
+                                <circle cx="275" cy="20" r="3" fill="none" stroke="#ffffff" stroke-width="1.2">
+                                    <animate attributeName="r" values="3;9" dur="2s" repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="0.85;0" dur="2s"
+                                        repeatCount="indefinite" />
+                                </circle>
+                                <text x="270" y="12" class="ascent-annot" text-anchor="end"
+                                    data-i18n="ascent_orbit">Orbite de transfert</text>
+                                <circle r="3" fill="#ffffff" filter="url(#ascentGlow)">
+                                    <animateMotion path="M 42 78 C 76 77, 104 60, 124 50 C 158 36, 215 20, 275 20"
+                                        dur="4s" repeatCount="indefinite" />
+                                </circle>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/jean-dellalonga/" target="_blank" rel="noopener"
+                            class="social-btn" title="LinkedIn">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                            </svg>
+                        </a>
+                        <a href="https://github.com/oxymov" target="_blank" rel="noopener" class="social-btn"
+                            title="GitHub">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+                            </svg>
+                        </a>
+                        <a href="mailto:jean.della-longa@insa-rouen.fr" class="social-btn" title="Email">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="experiences">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow" data-i18n="exp_eyebrow">Parcours Professionnel</span>
+                <h2 class="section-title" data-i18n="exp_title">Expériences en Industrie</h2>
+                <p class="section-desc" data-i18n="exp_desc">
+                    De la caractérisation sub-micronique de matériaux composites à l'optimisation prédictive de systèmes
+                    de mesures spatiales.
+                </p>
+            </div>
+
+            <div class="timeline">
+
+                <div class="experience-card">
+                    <div class="exp-header">
+                        <div class="exp-title-group">
+                            <div class="company-logo" title="ArianeGroup">
+                                <img src="logoarianegroup.jpg" alt="ArianeGroup" />
+                            </div>
+                            <div>
+                                <span class="exp-company">ArianeGroup</span>
+                                <h3 class="exp-role" data-i18n="ag_role">Apprenti Ingénieur / Développeur Métrologie
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="exp-meta">
+                            <span class="exp-date">2025 – 2028</span>
+                            <div data-i18n="ag_loc">Saint-Médard-en-Jalles (Bordeaux), France</div>
+                        </div>
+                    </div>
+                    <ul class="exp-list">
+                        <li data-i18n="ag_b1">
+                            <strong>Logiciel de calibration intelligent :</strong> Architecture et déploiement d'une
+                            solution logicielle propriétaire autonome optimisant les intervalles de recalibration sur
+                            des systèmes de mesure de vol (> 1 000 voies d'acquisition), automatisant les calculs et
+                            l'archivage annuel.
+                        </li>
+                        <li data-i18n="ag_b2">
+                            <strong>Analyse prédictive de dérive :</strong> Élaboration d'équations mathématiques et
+                            d'algorithmes prédictifs pour anticiper la dérive des capteurs dans le temps, réduisant de
+                            50 % les temps d'arrêt de maintenance et générant 72 000 € d'économies annuelles tout en
+                            garantissant une fiabilité maximale.
+                        </li>
+                        <li data-i18n="ag_b3">
+                            <strong>Modélisation des mesures, Incertitudes & Automatisation :</strong> Modélisation de
+                            chaînes de mesure, analyses complètes d'incertitudes pour identifier les variables d'impact
+                            critiques, et déploiement de cartes de contrôle statistique (SPC) automatisées en temps réel
+                            sous Python.
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="experience-card">
+                    <div class="exp-header">
+                        <div class="exp-title-group">
+                            <div class="company-logo" title="Safran Ceramics">
+                                <img src="safran.jpeg" alt="Safran Ceramics" />
+                            </div>
+                            <div>
+                                <span class="exp-company">Safran Ceramics</span>
+                                <h3 class="exp-role" data-i18n="safran_role">Apprenti Ingénieur Matériaux & CND</h3>
+                            </div>
+                        </div>
+                        <div class="exp-meta">
+                            <span class="exp-date">2024 – 2025</span>
+                            <div data-i18n="safran_loc">Bordeaux, France</div>
+                        </div>
+                    </div>
+                    <ul class="exp-list">
+                        <li data-i18n="safran_b1">
+                            <strong>Contrôle Non Destructif Haute Résolution (UltraTom) :</strong> Réalisation
+                            d'inspections avancées par tomographie X 3D (système RX Solutions UltraTom) et thermographie
+                            infrarouge sur des matériaux composites à matrice céramique (CMC), avec des résolutions
+                            inférieures à 5 μm.
+                        </li>
+                        <li data-i18n="safran_b2">
+                            <strong>Conception et prototypage d'outillages :</strong> Modélisation CAO et impression 3D
+                            d'outillages modulaires sur mesure pour résoudre les contraintes critiques de positionnement
+                            et de stabilisation d'échantillons miniatures dans le tomographe, assurant la répétabilité
+                            des acquisitions.
+                        </li>
+                        <li data-i18n="safran_b3">
+                            <strong>Optimisation des procédés :</strong> Collaboration directe avec les unités de
+                            production et d'essais pour analyser la distribution des défauts et améliorer en continu les
+                            procédés d'élaboration de céramiques avancées.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="competences" class="bg-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow" data-i18n="skills_eyebrow">Savoir-faire & Vulgarisation</span>
+                <h2 class="section-title" data-i18n="skills_title">Compétences & Projet Vidéo</h2>
+                <p class="section-desc" data-i18n="skills_desc">
+                    Une alliance entre rigueur d'ingénierie physique et passion pour le partage : de la modélisation à
+                    la vulgarisation des concepts fondamentaux de l'IA.
+                </p>
+            </div>
+
+            <div class="skills-video-layout">
+
+                <div class="video-showcase-card">
+                    <div class="video-thumbnail-box" onclick="openVideoModal()">
+                        <div class="video-overlay-grid"></div>
+                        <button class="video-play-btn" aria-label="Lire la vidéo" onclick="openVideoModal()">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </button>
+                        <span class="video-duration-tag">~ 15 min</span>
+                    </div>
+
+                    <div class="video-content-box">
+                        <div>
+                            <div class="video-badge-row">
+                                <span class="video-badge-yt">
+                                    <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                    </svg>
+                                    YouTube Concept
+                                </span>
+                                <span class="video-badge-status" data-i18n="video_badge_status">Projet de Vulgarisation
+                                    IA</span>
+                            </div>
+
+                            <h3 class="video-title" data-i18n="video_title">
+                                Comprendre le fonctionnement d'une IA : des bases mathématiques aux Transformers
+                            </h3>
+
+                            <p class="video-desc" data-i18n="video_desc">
+                                Un projet de vidéo pédagogique approfondie qui me tient à cœur : expliquer de façon
+                                intuitive et visuelle ce qui se cache sous le capot des modèles d'IA (réseaux de
+                                neurones, rétropropagation du gradient, mécanismes d'attention).
+                            </p>
+                        </div>
+
+                        <button class="video-action-btn" onclick="openVideoModal()">
+                            <span data-i18n="video_action_btn">Découvrir la note d'intention</span> →
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="skills-compact-grid">
+
+                    <div class="skill-compact-card">
+                        <div>
+                            <div class="skill-compact-header">
+                                <div class="skill-compact-icon">
+                                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                    </svg>
+                                </div>
+                                <h3 class="skill-compact-title" data-i18n="sk_cat_ai">IA & Code Python</h3>
+                            </div>
+                            <p class="skill-compact-desc" data-i18n="sk_ai_desc">
+                                Modélisation de données, Traitement du Langage Naturel (NLP), pipelines temps réel et
+                                algorithmes prédictifs pour l'industrie.
+                            </p>
+                        </div>
+                        <div class="skill-compact-tags">
+                            <span class="skill-tag-sm">Python</span>
+                            <span class="skill-tag-sm">NLP</span>
+                            <span class="skill-tag-sm">SPC Statistique</span>
+                            <span class="skill-tag-sm">Git</span>
+                        </div>
+                    </div>
+
+
+                    <div class="skill-compact-card">
+                        <div>
+                            <div class="skill-compact-header">
+                                <div class="skill-compact-icon">
+                                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                    </svg>
+                                </div>
+                                <h3 class="skill-compact-title" data-i18n="sk_cat_ndt">Métrologie & CND</h3>
+                            </div>
+                            <p class="skill-compact-desc" data-i18n="sk_ndt_desc">
+                                Chaînes de mesure de vol, bilans d'incertitudes, tomographie RX sub-5µm (UltraTom),
+                                thermographie IR et contrôles avancés.
+                            </p>
+                        </div>
+                        <div class="skill-compact-tags">
+                            <span class="skill-tag-sm">Tomographie X</span>
+                            <span class="skill-tag-sm">Thermographie IR</span>
+                            <span class="skill-tag-sm">Incertitudes</span>
+                            <span class="skill-tag-sm">Capteurs</span>
+                        </div>
+                    </div>
+
+
+                    <div class="skill-compact-card">
+                        <div>
+                            <div class="skill-compact-header">
+                                <div class="skill-compact-icon">
+                                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                    </svg>
+                                </div>
+                                <h3 class="skill-compact-title" data-i18n="sk_cat_mat">Matériaux & Racing</h3>
+                            </div>
+                            <p class="skill-compact-desc" data-i18n="sk_mat_desc">
+                                Matériaux composites pour la monoplace INSA Rouen Racing, composites céramiques (CMC),
+                                résistance des matériaux (RDM) et allègement.
+                            </p>
+                        </div>
+                        <div class="skill-compact-tags">
+                            <span class="skill-tag-sm">Composites</span>
+                            <span class="skill-tag-sm">INSA Racing</span>
+                            <span class="skill-tag-sm">RDM</span>
+                            <span class="skill-tag-sm">Céramiques</span>
+                        </div>
+                    </div>
+
+
+                    <div class="skill-compact-card">
+                        <div>
+                            <div class="skill-compact-header">
+                                <div class="skill-compact-icon">
+                                    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                    </svg>
+                                </div>
+                                <h3 class="skill-compact-title" data-i18n="sk_cat_cad">Conception & CAO</h3>
+                            </div>
+                            <p class="skill-compact-desc" data-i18n="sk_cad_desc">
+                                Modélisation 3D avancée, conception d'outillages modulaires pour essais mécaniques,
+                                prototypage rapide et fabrication additive.
+                            </p>
+                        </div>
+                        <div class="skill-compact-tags">
+                            <span class="skill-tag-sm">CATIA V5</span>
+                            <span class="skill-tag-sm">SolidWorks</span>
+                            <span class="skill-tag-sm">Impression 3D</span>
+                            <span class="skill-tag-sm">Outillages</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="formation">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow" data-i18n="edu_eyebrow">Cursus Académique</span>
+                <h2 class="section-title" data-i18n="edu_title">Formation & Diplômes</h2>
+                <p class="section-desc" data-i18n="edu_desc">
+                    Un parcours académique marqué par l'excellence scientifique et technique.
+                </p>
+            </div>
+
+            <div class="edu-grid">
+
+                <div class="edu-card">
+                    <div>
+                        <div class="edu-rank" data-i18n="edu_1_rank">★ Classé 2e de promotion</div>
+                        <div class="edu-school">INSA Rouen Normandie</div>
+                        <h3 class="edu-degree" data-i18n="edu_1_deg">Diplôme d'Ingénieur (Grade Master) – Génie
+                            Mécanique et Industriel</h3>
+                        <p class="edu-desc" data-i18n="edu_1_desc">
+                            Mécanique des solides et des fluides, modélisation 3D, gestion de projet industriel,
+                            optimisation des procédés et démarche qualité.
+                        </p>
+                    </div>
+                    <div class="edu-footer">
+                        <span>Rouen, France</span>
+                        <span>2025 – 2028</span>
+                    </div>
+                </div>
+
+
+                <div class="edu-card">
+                    <div>
+                        <div class="edu-rank" data-i18n="edu_2_rank">🏆 Major de promotion (1er)</div>
+                        <div class="edu-school" data-i18n="edu_2_school">Université de Bordeaux / IUT de Bordeaux</div>
+                        <h3 class="edu-degree" data-i18n="edu_2_deg">Diplôme Universitaire (DU) en Contrôles Non
+                            Destructifs (CND)</h3>
+                        <p class="edu-desc" data-i18n="edu_2_desc">
+                            Spécialisation avancée dans l'inspection de matériaux et structures sans altération :
+                            tomographie et radiographie X, thermographie IR, ultrasons et ressuage.
+                        </p>
+                    </div>
+                    <div class="edu-footer">
+                        <span>Bordeaux / Gradignan, France</span>
+                        <span>2024 – 2025</span>
+                    </div>
+                </div>
+
+
+                <div class="edu-card">
+                    <div>
+                        <div class="edu-rank" data-i18n="edu_3_rank">★ Classé 2e de promotion</div>
+                        <div class="edu-school">IUT de Bordeaux</div>
+                        <h3 class="edu-degree" data-i18n="edu_3_deg">BUT Science et Génie des Matériaux (SGM)</h3>
+                        <p class="edu-desc" data-i18n="edu_3_desc">
+                            Caractérisation physique, chimique et mécanique, élaboration et mise en forme des matériaux
+                            (composites, céramiques, polymères, alliages métalliques) et CAO.
+                        </p>
+                    </div>
+                    <div class="edu-footer">
+                        <span>Bordeaux / Gradignan, France</span>
+                        <span>2023 – 2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="projets" class="bg-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow" data-i18n="proj_eyebrow">Initiatives & Leadership</span>
+                <h2 class="section-title" data-i18n="proj_title">Projets & Engagement Associatif</h2>
+                <p class="section-desc" data-i18n="proj_desc">
+                    Développement technologique, pédagogie universitaire et engagement citoyen.
+                </p>
+            </div>
+
+            <div class="projects-grid">
+
+                <div class="project-card">
+                    <div class="project-banner"
+                        style="background-image: url('monoplace.png'); background-color: #0f172a; background-size: cover; background-position: center;">
+                        <span class="project-badge" data-i18n="proj_racing_badge">Écurie Formula Student • 2025 –
+                            Présent</span>
+                    </div>
+                    <div class="project-body">
+                        <div>
+                            <h3 data-i18n="proj_racing_title">INSA Rouen Racing (Monoplace)</h3>
+                            <p data-i18n="proj_racing_desc">
+                                Participation active au pôle matériaux de l'écurie Formula Student de l'INSA Rouen
+                                Normandie. Recherche, dimensionnement et caractérisation des matériaux composites de la
+                                monoplace de compétition. Calculs RDM, allègement structural et optimisation
+                                aérodynamique.
+                            </p>
+                        </div>
+                        <span class="project-tag-pill" data-i18n="proj_racing_link">
+                            🏎️ Pôle Matériaux • Formula Student
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="project-card">
+                    <div class="project-banner"
+                        style="background-image: url('1.png'); background-color: #0f172a; background-size: cover; background-position: center;">
+                        <span class="project-badge" data-i18n="proj_1_badge">Fondateur & Lead AI Developer •
+                            Terminé</span>
+                    </div>
+                    <div class="project-body">
+                        <div>
+                            <h3>SmartCord.ai</h3>
+                            <p data-i18n="proj_1_desc">
+                                Conception et déploiement d'un agent IA multimodal intégré à Discord, capable
+                                d'interagir en temps réel par texte et salons vocaux. Architecture du backend Python
+                                combinant Traitement du Langage Naturel (NLP) et pipelines de données automatisés pour
+                                exécuter des tâches analytiques complexes.
+                            </p>
+                        </div>
+                        <button class="btn-finished" onclick="handleFinishedProject(event, 'SmartCord.ai')">
+                            <span class="finished-dot"></span>
+                            <span data-i18n="proj_1_link">Visiter smartcord.ai</span>
+                            <span class="finished-label-tag" data-i18n="proj_status_tag">Terminé</span>
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="project-card">
+                    <div class="project-banner"
+                        style="background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 50%, #60a5fa 100%);">
+                        <span class="project-badge" data-i18n="proj_encrier_badge">Création Web & Artistique •
+                            Terminé</span>
+                    </div>
+                    <div class="project-body">
+                        <div>
+                            <h3 data-i18n="proj_encrier_title">EncrierBleu.fr</h3>
+                            <p data-i18n="proj_encrier_desc">
+                                Création de la plateforme artistique EncrierBleu.fr dédiée à la valorisation de la
+                                peinture, du dessin, de l'écriture et de la photographie. Conception de l'espace
+                                d'exposition en ligne et mise en valeur d'artistes indépendants.
+                            </p>
+                        </div>
+                        <button class="btn-finished" onclick="handleFinishedProject(event, 'EncrierBleu.fr')">
+                            <span class="finished-dot"></span>
+                            <span data-i18n="proj_encrier_link">Découvrir encrierbleu.fr</span>
+                            <span class="finished-label-tag" data-i18n="proj_status_tag">Terminé</span>
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="project-card">
+                    <div class="project-banner"
+                        style="background-image: url('tuteur-bdx.jpg'); background-size: cover; background-position: center;">
+                        <span class="project-badge" data-i18n="proj_2_badge">Enseignement & Mentorat (2024 –
+                            2025)</span>
+                    </div>
+                    <div class="project-body">
+                        <div>
+                            <h3 data-i18n="proj_2_title">Tuteur Académique & Chargé de Communication</h3>
+                            <p data-i18n="proj_2_desc">
+                                Accompagnement scientifique d'étudiants en licence et BUT à l'Université et à l'IUT de
+                                Bordeaux (mathématiques, sciences physiques, méthodologie). Animation de cours de
+                                communication professionnelle axés sur la rédaction de rapports techniques et l'aisance
+                                à l'oral.
+                            </p>
+                        </div>
+                        <span class="project-tag-pill"
+                            style="background: var(--bg-alt); color: var(--text-secondary); border: 1px solid var(--border-color);">
+                            🎓 Université & IUT de Bordeaux
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="project-card">
+                    <div class="project-banner"
+                        style="background-image: url('enghien-les-bains-logo-bon-format_lg.jpeg'); background-color: #ffffff; background-size: contain; background-repeat: no-repeat; background-position: center;">
+                        <span class="project-badge" data-i18n="proj_cmj_badge">Engagement Citoyen (2018 – 2020)</span>
+                    </div>
+                    <div class="project-body">
+                        <div>
+                            <h3 data-i18n="proj_cmj_title">Conseil Municipal des Jeunes</h3>
+                            <p data-i18n="proj_cmj_desc">
+                                Ancien Conseiller Municipal des Jeunes à Enghien-les-Bains (Val-d'Oise). Engagement
+                                citoyen actif dans le pilotage de projets locaux d'intérêt public, organisation
+                                d'événements municipaux et dialogue avec les élus locaux.
+                            </p>
+                        </div>
+                        <span class="project-tag-pill"
+                            style="background: var(--bg-alt); color: var(--text-secondary); border: 1px solid var(--border-color);">
+                            🏛️ Enghien-les-Bains (Val-d'Oise)
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <h2 data-i18n="contact_title">Échangeons sur vos projets</h2>
+                <p data-i18n="contact_desc">
+                    À la recherche d'un stage technique ou international de 9 semaines (disponible entre juin et octobre
+                    2027) ou ouvert aux opportunités dans les secteurs de l'aérospatial, de la métrologie et des
+                    matériaux.
+                </p>
+                <a href="mailto:jean.della-longa@insa-rouen.fr" class="contact-email-btn">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    jean.della-longa@insa-rouen.fr
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="container">
+            <p>© <span id="year"></span> Jean Della Longa (jeandl.fr) — <span data-i18n="footer_rights">Tous droits
+                    réservés.</span></p>
+        </div>
+    </footer>
+
+
+    <div id="toastNotice" class="toast-notice" role="alert">
+        <span id="toastIcon">ℹ️</span>
+        <span id="toastMsg">Notification</span>
     </div>
-    <div class="project">
-      <h3>Projets Spatiaux</h3>
-      <p>
-        Contribution à des programmes de mesure, analyse de données
-        et fiabilisation de systèmes industriels et spatiaux.
-      </p>
+
+
+    <div id="videoModal" class="modal-backdrop" onclick="if(event.target === this) closeVideoModal()">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div style="display: flex; align-items: center; gap: 0.6rem;">
+                    <span style="font-size: 1.4rem;">🎬</span>
+                    <h3 style="font-size: 1.25rem; font-weight: 800;" data-i18n="modal_video_title">Projet Vidéo :
+                        Vulgarisation IA</h3>
+                </div>
+                <button class="modal-close-btn" onclick="closeVideoModal()" aria-label="Fermer">✕</button>
+            </div>
+            <div
+                style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.65; display: flex; flex-direction: column; gap: 0.85rem;">
+                <p data-i18n="modal_video_p1">
+                    Passionné par l'intersection entre ingénierie, mathématiques et développement informatique, j'ai
+                    pour ambition de concevoir une vidéo explicative grand format sur <strong>le fonctionnement réel
+                        d'une Intelligence Artificielle</strong>.
+                </p>
+                <p data-i18n="modal_video_p2">
+                    L'objectif : aller au-delà du simple buzzword en expliquant visuellement la mécanique sous-jacente —
+                    comment un modèle apprend par descente de gradient, ce qu'est une fonction de coût, et comment
+                    l'attention a révolutionné le traitement du langage avec les Transformers.
+                </p>
+                <p data-i18n="modal_video_p3">
+                    Cette vidéo est actuellement en phase de scénarisation et de conception graphique. Si vous souhaitez
+                    échanger sur ce projet ou collaborer, écrivez-moi !
+                </p>
+            </div>
+            <div
+                style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-color); display: flex; justify-content: flex-end; gap: 0.75rem; flex-wrap: wrap;">
+                <a href="mailto:jean.della-longa@insa-rouen.fr?subject=Projet%20Vid%C3%A9o%20IA" class="btn btn-primary"
+                    style="padding: 0.65rem 1.4rem; font-size: 0.9rem;" data-i18n="modal_video_contact">
+                    Échanger par email
+                </a>
+                <button class="btn btn-secondary" onclick="closeVideoModal()"
+                    style="padding: 0.65rem 1.25rem; font-size: 0.9rem;" data-i18n="modal_video_close">
+                    Fermer
+                </button>
+            </div>
+        </div>
     </div>
-  </div>
-</section>
 
-<!-- TIMELINE -->
-<section class="world reveal">
-  <h2>Chronologie Orbitale</h2>
-  <div class="timeline">
-    <div class="event"><h3>ArianeGroup</h3><p>Mesures spatiales, automatisation.</p></div>
-    <div class="event"><h3>Safran Ceramics</h3><p>CND, tomographie X, thermographie.</p></div>
-    <div class="event"><h3>Université de Bordeaux</h3><p>Tutorat & accompagnement.</p></div>
-  </div>
-</section>
 
-<!-- CONTACT -->
-<section class="contact reveal">
-  <p>📧 jean.dellalonga@gmail.com</p>
-  <a href="https://www.linkedin.com/in/jean-dellalonga/" target="_blank">LinkedIn</a>
-</section>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        function toggleNavMenu(e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('open');
+        }
 
-<script>
-/* Cursor */
-const cursor=document.querySelector(".cursor");
-document.addEventListener("mousemove",e=>{
-cursor.style.left=e.clientX+"px";
-cursor.style.top=e.clientY+"px";
-});
+        function closeNavMenu() {
+            const nav = document.getElementById('navLinks');
+            if (nav) nav.classList.remove('open');
+        }
 
-/* Reveal */
-const obs=new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting)e.target.classList.add("visible");
-});
-},{threshold:.3});
-document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
+        document.addEventListener('click', (e) => {
+            const nav = document.getElementById('navLinks');
+            const toggle = document.getElementById('mobileToggle');
+            if (nav && nav.classList.contains('open')) {
+                if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                    nav.classList.remove('open');
+                }
+            }
+        });
 
-/* Stars */
-const canvas=document.getElementById("stars");
-const ctx=canvas.getContext("2d");
-let w,h,stars=[];
-function resize(){
-w=canvas.width=window.innerWidth;
-h=canvas.height=window.innerHeight;
-stars=Array.from({length:200},()=>({
-x:Math.random()*w,
-y:Math.random()*h,
-r:Math.random()*1.5,
-s:Math.random()*0.5+0.2
-}));
-}
-window.addEventListener("resize",resize);
-resize();
-function draw(){
-ctx.clearRect(0,0,w,h);
-ctx.fillStyle="white";
-stars.forEach(s=>{
-s.y+=s.s;
-if(s.y>h)s.y=0;
-ctx.beginPath();
-ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-ctx.fill();
-});
-requestAnimationFrame(draw);
-}
-draw();
-</script>
+        let currentLang = 'fr';
+
+        const mainHeader = document.getElementById('mainHeader');
+        const scrollProgress = document.getElementById('scrollProgress');
+        const sections = document.querySelectorAll('section[id]');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+
+            if (scrollY > 35) {
+                mainHeader.classList.add('scrolled');
+            } else {
+                mainHeader.classList.remove('scrolled');
+            }
+
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+            scrollProgress.style.width = progress + '%';
+
+            let currentSection = '';
+            sections.forEach(sec => {
+                const sectionTop = sec.offsetTop - 140;
+                if (scrollY >= sectionTop) {
+                    currentSection = sec.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(link => {
+                link.classList.remove('active-link');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active-link');
+                }
+            });
+        });
+
+        let toastTimeout = null;
+        function showToast(msg, isDenied = false, icon = 'ℹ️') {
+            const toast = document.getElementById('toastNotice');
+            const toastMsg = document.getElementById('toastMsg');
+            const toastIcon = document.getElementById('toastIcon');
+
+            toastMsg.textContent = msg;
+            toastIcon.textContent = icon;
+
+            if (isDenied) {
+                toast.classList.add('denied');
+            } else {
+                toast.classList.remove('denied');
+            }
+
+            toast.classList.add('show');
+
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3600);
+        }
+
+        function handleFinishedProject(e, projectName) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            const btn = e ? e.currentTarget : null;
+            if (btn) {
+                btn.classList.remove('denied');
+                void btn.offsetWidth;
+                btn.classList.add('denied');
+                setTimeout(() => {
+                    btn.classList.remove('denied');
+                }, 1300);
+            }
+
+            const message = currentLang === 'fr'
+                ? `Projet terminé — ${projectName} est archivé et non accessible en ligne.`
+                : `Project completed — ${projectName} is archived and no longer live.`;
+
+            showToast(message, true, '⛔');
+        }
+
+        function openVideoModal() {
+            document.getElementById('videoModal').classList.add('open');
+        }
+
+        function closeVideoModal() {
+            document.getElementById('videoModal').classList.remove('open');
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeVideoModal();
+            }
+        });
+
+        const translations = {
+            fr: {
+                nav_exp: "Expériences",
+                nav_skills: "Compétences",
+                nav_edu: "Formation",
+                nav_projects: "Projets & Engagement",
+                nav_contact: "Contact",
+                hero_badge: "Apprenti Ingénieur @ ArianeGroup • INSA Rouen",
+                hero_bento_title: 'Portfolio<span style="color:var(--accent)">.</span>',
+                hero_title: 'Ingénierie Mécanique, <span class="highlight">Métrologie</span> & Science des Matériaux.',
+                hero_subtitle: "Étudiant ingénieur à l'INSA Rouen Normandie et apprenti chez ArianeGroup. Spécialisé dans la modélisation de chaînes de mesure, les contrôles non destructifs (CND) sub-microniques, la science des matériaux et le développement Python appliqué à l'industrie spatiale et aéronautique.",
+                hero_cta_exp: "Découvrir mon parcours",
+                hero_cta_contact: "Me contacter",
+                hero_domain_title: "Domaines",
+                hero_tag_mat: "Matériaux",
+                stat_years: "3+",
+                stat_years_label: "Ans d'exp.",
+                stat_rank: "2e",
+                stat_rank_label: "de promo",
+                card_role: "Apprenti Ingénieur Aérospatial",
+                card_ariane_stat: "270 Lancements",
+                ascent_title: "Trajectoire de Vol",
+                ascent_sep: "Séparation boosters",
+                ascent_orbit: "Orbite de transfert",
+                ascent_axis_t: "t (Temps)",
+                card_tag_ndt: "CND & Métrologie",
+                exp_eyebrow: "Parcours Professionnel",
+                exp_title: "Expériences en Industrie",
+                exp_desc: "De la caractérisation sub-micronique de matériaux composites à l'optimisation prédictive de systèmes de mesures spatiales.",
+                ag_role: "Apprenti Ingénieur / Développeur Métrologie",
+                ag_loc: "Saint-Médard-en-Jalles (Bordeaux), France",
+                ag_b1: "<strong>Logiciel de calibration intelligent :</strong> Architecture et déploiement d'une solution logicielle propriétaire autonome optimisant les intervalles de recalibration sur des systèmes de mesure de vol (> 1 000 voies d'acquisition), automatisant les calculs et l'archivage annuel.",
+                ag_b2: "<strong>Analyse prédictive de dérive :</strong> Élaboration d'équations mathématiques et d'algorithmes prédictifs pour anticiper la dérive des capteurs dans le temps, réduisant de 50 % les temps d'arrêt de maintenance et générant 72 000 € d'économies annuelles tout en garantissant une fiabilité maximale.",
+                ag_b3: "<strong>Modélisation des mesures, Incertitudes & Automatisation :</strong> Modélisation de chaînes de mesure, analyses complètes d'incertitudes pour identifier les variables d'impact critiques, et déploiement de cartes de contrôle statistique (SPC) automatisées en temps réel sous Python.",
+                safran_role: "Apprenti Ingénieur Matériaux & CND",
+                safran_loc: "Bordeaux, France",
+                safran_b1: "<strong>Contrôle Non Destructif Haute Résolution (UltraTom) :</strong> Réalisation d'inspections avancées par tomographie X 3D (système RX Solutions UltraTom) et thermographie infrarouge sur des matériaux composites à matrice céramique (CMC), avec des résolutions inférieures à 5 μm.",
+                safran_b2: "<strong>Conception et prototypage d'outillages :</strong> Modélisation CAO et impression 3D d'outillages modulaires sur mesure pour résoudre les contraintes critiques de positionnement et de stabilisation d'échantillons miniatures dans le tomographe, assurant la répétabilité des acquisitions.",
+                safran_b3: "<strong>Optimisation des procédés :</strong> Collaboration directe avec les unités de production et d'essais pour analyser la distribution des défauts et améliorer en continu les procédés d'élaboration de céramiques avancées.",
+                skills_eyebrow: "Savoir-faire & Vulgarisation",
+                skills_title: "Compétences & Projet Vidéo",
+                skills_desc: "Une alliance entre rigueur d'ingénierie physique et passion pour le partage : de la modélisation à la vulgarisation des concepts fondamentaux de l'IA.",
+                video_badge_status: "Projet de Vulgarisation IA",
+                video_title: "Comprendre le fonctionnement d'une IA : des bases mathématiques aux Transformers",
+                video_desc: "Un projet de vidéo pédagogique approfondie qui me tient à cœur : expliquer de façon intuitive et visuelle ce qui se cache sous le capot des modèles d'IA (réseaux de neurones, rétropropagation du gradient, mécanismes d'attention).",
+                video_action_btn: "Découvrir la note d'intention",
+                sk_cat_ai: "IA & Code Python",
+                sk_ai_desc: "Modélisation de données, Traitement du Langage Naturel (NLP), pipelines temps réel et algorithmes prédictifs pour l'industrie.",
+                sk_cat_ndt: "Métrologie & CND",
+                sk_ndt_desc: "Chaînes de mesure de vol, bilans d'incertitudes, tomographie RX sub-5µm (UltraTom), thermographie IR et contrôles avancés.",
+                sk_cat_mat: "Matériaux & Racing",
+                sk_mat_desc: "Matériaux composites pour la monoplace INSA Rouen Racing, composites céramiques (CMC), résistance des matériaux (RDM) et allègement.",
+                sk_cat_cad: "Conception & CAO",
+                sk_cad_desc: "Modélisation 3D avancée, conception d'outillages modulaires pour essais mécaniques, prototypage rapide et fabrication additive.",
+                edu_eyebrow: "Cursus Académique",
+                edu_title: "Formation & Diplômes",
+                edu_desc: "Un parcours académique marqué par l'excellence scientifique et technique.",
+                edu_1_rank: "★ Classé 2e de promotion",
+                edu_1_deg: "Diplôme d'Ingénieur (Grade Master) – Génie Mécanique et Industriel",
+                edu_1_desc: "Mécanique des solides et des fluides, modélisation 3D, gestion de projet industriel, optimisation des procédés et démarche qualité.",
+                edu_2_rank: "🏆 Major de promotion (1er)",
+                edu_2_school: "Université de Bordeaux / IUT de Bordeaux",
+                edu_2_deg: "Diplôme Universitaire (DU) en Contrôles Non Destructifs (CND)",
+                edu_2_desc: "Spécialisation avancée dans l'inspection de matériaux et structures sans altération : tomographie et radiographie X, thermographie IR, ultrasons et ressuage.",
+                edu_3_rank: "★ Classé 2e de promotion",
+                edu_3_deg: "BUT Science et Génie des Matériaux (SGM)",
+                edu_3_desc: "Caractérisation physique, chimique et mécanique, élaboration et mise en forme des matériaux (composites, céramiques, polymères, alliages métalliques) et CAO.",
+                proj_eyebrow: "Initiatives & Leadership",
+                proj_title: "Projets & Engagement Associatif",
+                proj_desc: "Ingénierie de compétition, développement technologique, pédagogie universitaire et engagement citoyen.",
+                proj_racing_badge: "Écurie Formula Student • 2025 – Présent",
+                proj_racing_title: "INSA Rouen Racing (Monoplace)",
+                proj_racing_desc: "Participation active au pôle matériaux de l'écurie Formula Student de l'INSA Rouen Normandie. Recherche, dimensionnement et caractérisation des matériaux composites de la monoplace de compétition. Calculs RDM, allègement structural et optimisation aérodynamique.",
+                proj_racing_link: "🏎️ Pôle Matériaux • Formula Student",
+                proj_1_badge: "Fondateur & Lead AI Developer • Terminé",
+                proj_1_desc: "Conception et déploiement d'un agent IA multimodal intégré à Discord, capable d'interagir en temps réel par texte et salons vocaux. Architecture du backend Python combinant Traitement du Langage Naturel (NLP) et pipelines de données automatisés pour exécuter des tâches analytiques complexes.",
+                proj_1_link: "Visiter smartcord.ai",
+                proj_status_tag: "Terminé",
+                proj_encrier_badge: "Création Web & Artistique • Terminé",
+                proj_encrier_title: "EncrierBleu.fr",
+                proj_encrier_desc: "Création de la plateforme artistique EncrierBleu.fr dédiée à la valorisation de la peinture, du dessin, de l'écriture et de la photographie. Conception de l'espace d'exposition en ligne et mise en valeur d'artistes indépendants.",
+                proj_encrier_link: "Découvrir encrierbleu.fr",
+                proj_2_badge: "Enseignement & Mentorat (2024 – 2025)",
+                proj_2_title: "Tuteur Académique & Chargé de Communication",
+                proj_2_desc: "Accompagnement scientifique d'étudiants en licence et BUT à l'Université et à l'IUT de Bordeaux (mathématiques, sciences physiques, méthodologie). Animation de cours de communication professionnelle axés sur la rédaction de rapports techniques et l'aisance à l'oral.",
+                proj_cmj_badge: "Engagement Citoyen (2018 – 2020)",
+                proj_cmj_title: "Conseil Municipal des Jeunes",
+                proj_cmj_desc: "Ancien Conseiller Municipal des Jeunes à Enghien-les-Bains (Val-d'Oise). Engagement citoyen actif dans le pilotage de projets locaux d'intérêt public, organisation d'événements municipaux et dialogue avec les élus locaux.",
+                contact_title: "Échangeons sur vos projets",
+                contact_desc: "À la recherche d'un stage technique ou international de 9 semaines (disponible entre juin et octobre 2027) ou ouvert aux opportunités dans les secteurs de l'aérospatial, de la métrologie et des matériaux.",
+                footer_rights: "Tous droits réservés.",
+                modal_video_title: "Projet Vidéo : Vulgarisation IA",
+                modal_video_p1: "Passionné par l'intersection entre ingénierie, mathématiques et développement informatique, j'ai pour ambition de concevoir une vidéo explicative grand format sur <strong>le fonctionnement réel d'une Intelligence Artificielle</strong>.",
+                modal_video_p2: "L'objectif : aller au-delà du simple buzzword en expliquant visuellement la mécanique sous-jacente — comment un modèle apprend par descente de gradient, ce qu'est une fonction de coût, et comment l'attention a révolutionné le traitement du langage avec les Transformers.",
+                modal_video_p3: "Cette vidéo est actuellement en phase de scénarisation et de conception graphique. Si vous souhaitez échanger sur ce projet ou collaborer, écrivez-moi !",
+                modal_video_contact: "Échanger par email",
+                modal_video_close: "Fermer"
+            },
+            en: {
+                nav_exp: "Experience",
+                nav_skills: "Skills",
+                nav_edu: "Education",
+                nav_projects: "Projects & Leadership",
+                nav_contact: "Contact",
+                hero_badge: "Engineering Apprentice @ ArianeGroup • INSA Rouen",
+                hero_bento_title: 'Portfolio<span style="color:var(--accent)">.</span>',
+                hero_title: 'Mechanical Engineering, <span class="highlight">Metrology</span> & Materials Science.',
+                hero_subtitle: "Graduate engineering student at INSA Rouen Normandy and Apprentice Engineer at ArianeGroup. Specialized in measurement chain modeling, sub-micron non-destructive testing (NDT), materials science, and Python predictive modeling for the aerospace industry.",
+                hero_cta_exp: "Explore my background",
+                hero_cta_contact: "Get in touch",
+                hero_domain_title: "Domains",
+                hero_tag_mat: "Materials",
+                stat_years: "3+",
+                stat_years_label: "Yrs exp.",
+                stat_rank: "2nd",
+                stat_rank_label: "in class",
+                card_role: "Aerospace Engineering Apprentice",
+                card_ariane_stat: "270 Ariane Launches",
+                ascent_title: "Flight Trajectory",
+                ascent_sep: "Booster separation",
+                ascent_orbit: "Transfer orbit",
+                ascent_axis_t: "t (Time)",
+                card_tag_ndt: "NDT & Metrology",
+                exp_eyebrow: "Professional Track",
+                exp_title: "Industry Experience",
+                exp_desc: "From sub-micron characterization of composite materials to predictive optimization of aerospace measurement systems.",
+                ag_role: "Apprentice Engineer / Metrology Developer",
+                ag_loc: "Saint-Médard-en-Jalles (Bordeaux), France",
+                ag_b1: "<strong>Smart Calibration Software:</strong> Architected and deployed an autonomous proprietary software solution optimizing recalibration intervals across flight measurement systems featuring over 1,000 acquisition channels, automating calculations and historical annual data logging.",
+                ag_b2: "<strong>Predictive Drift Analysis:</strong> Engineered mathematical models and predictive algorithms to forecast sensor drift over time, cutting maintenance downtime by 50% on targeted equipment and generating €72,000 in annual cost savings while ensuring high measurement reliability.",
+                ag_b3: "<strong>Measurement Modeling, Uncertainty & Automation:</strong> Modeled measurement processes, conducted comprehensive uncertainty analyses to identify critical impact variables, and implemented automated statistical process control (SPC) charts with real-time Python data pipelines.",
+                safran_role: "Materials & NDT Engineering Apprentice",
+                safran_loc: "Bordeaux, France",
+                safran_b1: "<strong>High-Resolution NDT (UltraTom):</strong> Conducted advanced 3D computed tomography inspections on an RX Solutions UltraTom system and infrared thermography on ceramic matrix composites (CMC), reaching resolutions below 5 μm.",
+                safran_b2: "<strong>Tooling Design & Prototyping:</strong> Designed and 3D-printed specialized modular fixtures via CAD to resolve critical positioning and stabilization constraints for miniature specimens inside the tomograph, ensuring scan repeatability.",
+                safran_b3: "<strong>Process Optimization:</strong> Collaborated directly with production and testing units to analyze defect distributions and continuously improve manufacturing workflows for high-performance advanced ceramics.",
+                skills_eyebrow: "Expertise & Outreach",
+                skills_title: "Skills & Video Project",
+                skills_desc: "A union between physical engineering rigor and a passion for teaching: from physical modeling to demystifying the fundamental concepts of AI.",
+                video_badge_status: "AI Video Project",
+                video_title: "Demystifying AI: From Fundamental Math to Transformers",
+                video_desc: "An in-depth explainer video project close to my heart: breaking down what really happens inside AI models (neural networks, gradient backpropagation, attention mechanisms) visually and intuitively.",
+                video_action_btn: "Read the creator's note",
+                sk_cat_ai: "AI & Python Coding",
+                sk_ai_desc: "Data modeling, Natural Language Processing (NLP), real-time streaming pipelines, and predictive algorithms for industry.",
+                sk_cat_ndt: "Metrology & NDT",
+                sk_ndt_desc: "Flight measurement chains, uncertainty budgets, sub-5µm X-ray CT (UltraTom), IR thermography, and non-destructive evaluations.",
+                sk_cat_mat: "Materials & Racing",
+                sk_mat_desc: "Composite materials for the INSA Rouen Racing racecar, ceramic matrix composites (CMC), structural mechanics (RDM), and lightweight design.",
+                sk_cat_cad: "Design & CAD",
+                sk_cad_desc: "Advanced 3D modeling, custom modular tooling design for mechanical testing, rapid prototyping, and additive manufacturing.",
+                edu_eyebrow: "Academic Background",
+                edu_title: "Education & Degrees",
+                edu_desc: "An academic track record distinguished by scientific and technical excellence.",
+                edu_1_rank: "★ Ranked 2nd in class",
+                edu_1_deg: "Master of Engineering (MSc equiv.) – Mechanical & Industrial Engineering",
+                edu_1_desc: "Solid and fluid mechanics, 3D CAD modeling, industrial project management, process optimization, and quality engineering.",
+                edu_2_rank: "🏆 Valedictorian (Ranked 1st in class)",
+                edu_2_school: "University of Bordeaux / IUT of Bordeaux",
+                edu_2_deg: "University Diploma (DU) in Non-Destructive Testing (NDT)",
+                edu_2_desc: "Advanced specialization in non-invasive material and structural inspection: X-ray tomography and radiography, IR thermography, ultrasound, and penetrant testing.",
+                edu_3_rank: "★ Ranked 2nd in class",
+                edu_3_deg: "Bachelor of Technology (BUT) – Materials Science & Engineering",
+                edu_3_desc: "Physical, chemical, and mechanical characterization, manufacturing and processing of materials (composites, ceramics, polymers, metals) and CAD.",
+                proj_eyebrow: "Initiatives & Leadership",
+                proj_title: "Projects & Volunteering",
+                proj_desc: "Racecar engineering, software development, university mentorship, and civic leadership.",
+                proj_racing_badge: "Formula Student Team • 2025 – Present",
+                proj_racing_title: "INSA Rouen Racing (Single-Seater)",
+                proj_racing_desc: "Active member in the materials division of INSA Rouen Normandy's Formula Student racing team. Research, sizing, and mechanical characterization of lightweight composites for the competition racecar. FEA/stress calculations and aerodynamic optimization.",
+                proj_racing_link: "🏎️ Materials Division • Formula Student",
+                proj_1_badge: "Founder & Lead AI Developer • Completed",
+                proj_1_desc: "Architected and deployed a multimodal AI agent integrated into Discord, delivering real-time interactions across text and voice channels. Built the Python backend infrastructure coupling Natural Language Processing (NLP) with automated data pipelines to execute complex analytical tasks.",
+                proj_1_link: "Visit smartcord.ai",
+                proj_status_tag: "Completed",
+                proj_encrier_badge: "Web & Art Creation • Completed",
+                proj_encrier_title: "EncrierBleu.fr",
+                proj_encrier_desc: "Creation of the artistic platform EncrierBleu.fr dedicated to highlighting painting, drawing, writing, and photography. Online gallery design and promotion of independent artists.",
+                proj_encrier_link: "Discover encrierbleu.fr",
+                proj_2_badge: "Teaching & Mentorship (2024 – 2025)",
+                proj_2_title: "Academic Tutor & Communication Instructor",
+                proj_2_desc: "Tutored undergraduate students at the University and IUT of Bordeaux in mathematics, physical sciences, and methodology. Conducted professional communication seminars preparing students for technical reporting and oral presentations.",
+                proj_cmj_badge: "Civic Engagement (2018 – 2020)",
+                proj_cmj_title: "Youth Municipal Council",
+                proj_cmj_desc: "Former Youth Municipal Councilor in Enghien-les-Bains (Val-d'Oise, France). Civic involvement in steering local community projects, municipal events, and youth dialogue with town leadership.",
+                contact_title: "Let's Connect",
+                contact_desc: "Seeking a 9-week technical or international internship (available between June and October 2027) and open to opportunities in aerospace, metrology, and materials engineering.",
+                footer_rights: "All rights reserved.",
+                modal_video_title: "Video Project: Demystifying AI",
+                modal_video_p1: "Driven by the intersection of engineering, mathematics, and software development, I am working on a feature-length explainer video examining <strong>how Artificial Intelligence actually works under the hood</strong>.",
+                modal_video_p2: "The goal: go past buzzwords and visually explain the underlying mechanics — how models learn via gradient descent, what loss functions do, and how attention mechanisms revolutionized language processing with Transformers.",
+                modal_video_p3: "This video is currently in the storyboarding and visual animation phase. If you'd like to discuss the concept or collaborate, feel free to reach out!",
+                modal_video_contact: "Reach out via email",
+                modal_video_close: "Close"
+            }
+        };
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            document.getElementById('navLinks').classList.remove('open');
+        }
+    </script>
 </body>
+
 </html>
